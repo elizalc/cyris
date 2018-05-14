@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<div class="container-full full-page">
+  <div class="row m-0 h-100">
+    <div class="col-12 col-md-4">
+      <div class="container-form h-100">
+        <div class="center-form">
+          <form [formGroup]="userForm" (ngSubmit)="login()">
+            <h3>Hey there!</h3>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" formControlName="email" [(ngModel)]="email">
+              <mat-error *ngIf="formErrors.email" align="start" class="form__error">
+                {{ formErrors.email }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" type="password" formControlName="password" [(ngModel)]="password">
+              <mat-error *ngIf="formErrors.password" align="start" class="form__error">
+                {{ formErrors.password }}
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

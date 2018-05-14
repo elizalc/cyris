@@ -5,29 +5,45 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
+import { LayoutModule } from "./layouts/layout.module";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutes } from "./app.routing";
 
 import { AuthService } from "./services/auth.service";
+import { PersonalService } from "./services/personal.service";
+import { StaffInformationComponent } from './pages/staff-information/staff-information.component';
+import { NewPersonalComponent } from './pages/new-personal/new-personal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    StaffInformationComponent,
+    NewPersonalComponent
   ],
   imports: [
+    LayoutModule,
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PersonalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
