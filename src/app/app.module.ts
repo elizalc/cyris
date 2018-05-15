@@ -21,13 +21,15 @@ import { AuthService } from "./services/auth.service";
 import { PersonalService } from "./services/personal.service";
 import { StaffInformationComponent } from './pages/staff-information/staff-information.component';
 import { NewPersonalComponent } from './pages/new-personal/new-personal.component';
+import { PersonalEditComponent } from './pages/personal-edit/personal-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     StaffInformationComponent,
-    NewPersonalComponent
+    NewPersonalComponent,
+    PersonalEditComponent
   ],
   imports: [
     LayoutModule,

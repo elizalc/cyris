@@ -1,4 +1,5 @@
 export interface Personal {
+  id:any,
   nombre: string,
   paterno: string,
   materno: string,

@@ -5,6 +5,7 @@ import { LayoutComponent } from "./layouts/layout.component";
 
 import { StaffInformationComponent } from "./pages/staff-information/staff-information.component";
 import { NewPersonalComponent } from "./pages/new-personal/new-personal.component";
+import { PersonalEditComponent } from "./pages/personal-edit/personal-edit.component";
 
 export const AppRoutes: Routes =[
   {
@@ -28,6 +29,10 @@ export const AppRoutes: Routes =[
       {
         path: "nuevo-personal",
         component: NewPersonalComponent
+      },
+      {
+        path: "personal/editar/:id",
+        component: PersonalEditComponent
       }
     ]
   }

@@ -14,7 +14,11 @@ import { Personal } from "../../models/personal.model";
 })
 export class StaffInformationComponent implements OnInit {
 
-  displayedColumns = ['nombre', 'paterno', 'materno', 'nroDNI', 'estadoCivil', 'fechaNacimiento'];
+  public allPersonal= []
+  public userFilterAll = {
+    name: ''
+  }
+  displayedColumns = ['nombre', 'paterno', 'materno', 'nroDNI', 'estadoCivil', 'fechaNacimiento', 'Acciones'];
   dataSource = new PersonalDataSource(this.pes);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -40,6 +44,7 @@ export class StaffInformationComponent implements OnInit {
         data => console.log(data)
       )
   }
+
   // applyFilter(filterValue: string) {
   //   filterValue = filterValue.trim(); // Remove whitespace
   //   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -49,8 +54,6 @@ export class StaffInformationComponent implements OnInit {
 }
 
 export class PersonalDataSource extends DataSource<any> {
-
-  
 
   constructor(private pes: PersonalService) {
     super();
