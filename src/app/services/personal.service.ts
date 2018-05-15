@@ -28,6 +28,15 @@ export class PersonalService {
   public addPersonal(newPersonal: PersonalList): Observable<PersonalList[]>{
     return this.http.post<PersonalList[]>(this.serviceUrl, newPersonal)
   }
+  public editPersonal(editPersonal: PersonalList, id): Observable<PersonalList[]>{
+    return this.http.put<PersonalList[]>(this.serviceUrl+'/'+id,editPersonal)
+  }
+  public loadPersonal(id): Observable<PersonalList[]>{
+    return this.http.get<PersonalList[]>(this.serviceUrl + '/' + id)
+  }
+  public deletePersonal(id){
+    return this.http.delete(this.serviceUrl + '/' + id)
+  }
   private handleError(error: Response | any) {
     // console.error('handleError',error);
     console.error('handleError', error.message || error);

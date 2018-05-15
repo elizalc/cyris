@@ -1,66 +1,86 @@
 <div class="container">
   <form [formGroup]="personalForm" (ngSubmit)="addPersonal()">
-    <h3>Nuevo Personal</h3>
+    <h3 class="mt-4">Nuevo Personal</h3>
     <hr>
     <div class="row">
       <div class="col-4">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Id" formControlName="id">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>ID</mat-label>
+          <input matInput type="number" maxlength="5" placeholder="ID" formControlName="id">
           <mat-error *ngIf="formErrors.id" align="start" class="form__error">
             {{ formErrors.id }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Primer nombre</mat-label>
           <input matInput placeholder="Primer nombre" formControlName="nombre">
           <mat-error *ngIf="formErrors.nombre" align="start" class="form__error">
             {{ formErrors.nombre }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Segundo nombre</mat-label>
           <input matInput placeholder="Segundo nombre" formControlName="nombre2">
           <mat-error *ngIf="formErrors.nombre2" align="start" class="form__error">
             {{ formErrors.nombre2 }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Apellido Paterno</mat-label>
           <input matInput placeholder="Apellido Paterno" formControlName="paterno">
           <mat-error *ngIf="formErrors.paterno" align="start" class="form__error">
             {{ formErrors.paterno }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Apellido Materno</mat-label>
           <input matInput placeholder="Apellido Materno" formControlName="materno">
           <mat-error *ngIf="formErrors.materno" align="start" class="form__error">
             {{ formErrors.materno }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>DNI</mat-label>
           <input matInput placeholder="DNI" formControlName="nroDNI">
           <mat-error *ngIf="formErrors.nroDNI" align="start" class="form__error">
             {{ formErrors.nroDNI }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Vigencia" formControlName="vigenciaDNI">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Vigencia del DNI</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Vigencia del DNI" formControlName="vigenciaDNI">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="formErrors.vigenciaDNI" align="start" class="form__error">
             {{ formErrors.vigenciaDNI }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>RUC</mat-label>
           <input matInput placeholder="RUC" formControlName="nroRuc">
           <mat-error *ngIf="formErrors.nroRuc" align="start" class="form__error">
             {{ formErrors.nroRuc }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Pasaporte</mat-label>
           <input matInput placeholder="Pasaporte" formControlName="nroPasaporte">
           <mat-error *ngIf="formErrors.nroPasaporte" align="start" class="form__error">
             {{ formErrors.nroPasaporte }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Vigencia Pasaporte</mat-label>
           <input matInput [matDatepicker]="picker2" placeholder="Vigencia Pasaporte" formControlName="vigenciaPasaporte">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
@@ -68,26 +88,33 @@
             {{ formErrors.vigenciaPasaporte }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Estado civil" formControlName="estadoCivil">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Estado Civil</mat-label>
+          <input matInput placeholder="Estado Civil" formControlName="estadoCivil">
           <mat-error *ngIf="formErrors.estadoCivil" align="start" class="form__error">
             {{ formErrors.estadoCivil }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Género</mat-label>
           <input matInput placeholder="Género" formControlName="sexo">
           <mat-error *ngIf="formErrors.sexo" align="start" class="form__error">
             {{ formErrors.sexo }}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Fecha de Nacimiento" [matDatepicker]="picker3" formControlName="fechaNacimiento">
+        
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput placeholder="Fecha de Nacimiento" [matDatepicker]="picker3" formControlName="fechaNacimiento" required>
           <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
           <mat-datepicker #picker3></mat-datepicker>
           <mat-error *ngIf="formErrors.fechaNacimiento" align="start" class="form__error">
             {{ formErrors.fechaNacimiento }}
           </mat-error>
         </mat-form-field>
+        
       </div>  
       <div class="col-4">
 

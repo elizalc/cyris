@@ -45,6 +45,14 @@ export class StaffInformationComponent implements OnInit {
       )
   }
 
+  deletePersonal(id): void {
+    this.pes.deletePersonal(id)
+      .subscribe(
+        data=> console.log(data)
+      )
+    this.pes.getPersonal()
+  }
+
   // applyFilter(filterValue: string) {
   //   filterValue = filterValue.trim(); // Remove whitespace
   //   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
