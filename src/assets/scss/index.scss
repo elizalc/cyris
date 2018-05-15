@@ -1,5 +1,12 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber";
+@import "~mdbootstrap/css/mdb.min.css";
 @import "~bootstrap/scss/bootstrap";
 @import "~ngx-toastr/toastr-bs4-alert";
 @import "variables";
 @import "mixins";
+body {
+  background: #ececec;
+}
+table{
+  width: 100%;
+}

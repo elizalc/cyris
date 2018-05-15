@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { MaterialModule } from "../../material/material.module";
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,12 @@ import { Router } from "@angular/router";
   styleUrls: ['./app-header.component.css']
 })
 export class AppHeaderComponent implements OnInit {
-
+  
   constructor(
     private auth: AuthService,
     private router: Router
   ) { }
+  
 
   ngOnInit() {
   }

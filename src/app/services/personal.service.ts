@@ -6,7 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { Personal } from "../models/personal.model";
+import { Personal, PersonalList } from "../models/personal.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,9 @@ export class PersonalService {
 
   public getPersonal(): Observable<Personal[]> {
     return this.http.get<Personal[]>(this.serviceUrl)
+  }
+  public addPersonal(newPersonal: PersonalList): Observable<PersonalList[]>{
+    return this.http.post<PersonalList[]>(this.serviceUrl, newPersonal)
   }
   private handleError(error: Response | any) {
     // console.error('handleError',error);
