@@ -223,7 +223,7 @@ export class PersonalEditComponent implements OnInit {
     'materno': '',
     'nroDNI': '',
     'vigenciaDNI': '',
-    'nroRUC': '',
+    'nroRuc': '',
     'nroPasaporte': '',
     'vigenciaPasaporte': '',
     'estadoCivil': '',

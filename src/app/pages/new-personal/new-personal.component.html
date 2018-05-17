@@ -317,7 +317,7 @@
             <label for="web" class="col-form-label">Web
             </label>
             <div class="full-input">
-              <input type="text" [className]="formErrors.web.Trab ? 'form-control is-invalid' : 'form-control'" class="form-control" maxlength="40" 
+              <input type="text" [className]="formErrors.web ? 'form-control is-invalid' : 'form-control'" class="form-control" maxlength="40" 
                 id="web" formControlName="web">
               <small class="text-danger">
                 {{ formErrors.web }}
@@ -331,7 +331,7 @@
             <label for="nroLicencia" class="col-form-label">Número de Licencia
             </label>
             <div class="full-input">
-              <input type="text" [className]="formErrors.email.Trab ? 'form-control is-invalid' : 'form-control'" class="form-control" OnlyNumber="true"
+              <input type="text" [className]="formErrors.email ? 'form-control is-invalid' : 'form-control'" class="form-control" OnlyNumber="true"
                 id="nroLicencia" formControlName="nroLicencia">
               <small class="text-danger">
                 {{ formErrors.nroLicencia }}
