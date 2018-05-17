@@ -92,7 +92,7 @@ export class NewPersonalComponent implements OnInit {
       'telefonoRef': ['', [
         Validators.maxLength(11)
       ]],
-      'fijoTran': ['', [
+      'fijoTrab': ['', [
         Validators.maxLength(11)
       ]],
       'anexo': ['', [

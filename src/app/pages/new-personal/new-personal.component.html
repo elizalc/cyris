@@ -1,129 +1,334 @@
 <div class="container">
-  <form [formGroup]="personalForm" (ngSubmit)="addPersonal()">
-    <h3 class="mt-4">Nuevo Personal</h3>
-    <hr>
-    <div class="row">
-      <div class="col-4">
+  <div class="bg-white">
+    <form [formGroup]="personalForm" (ngSubmit)="addPersonal()">
+      <h3 class="mt-4">Nuevo Personal</h3>
+      <hr>
+      <div class="row">
+        <div class="col-12 col-md-4">
+          
+          <div class="form-group">
+            <label for="id" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-7">
+              <input type="number" [className]="formErrors.id ? 'form-control is-invalid' : 'form-control'" class="form-control" id="id" formControlName="id" required>
+              <p class="error-msg" *ngIf="formErrors.id">
+                <small class="text-danger">
+                  {{ formErrors.id }}
+                </small>
+              </p>
+            </div>
+          </div>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>ID</mat-label>
+            <input matInput type="number" maxlength="5" formControlName="id" required>
+            <mat-error *ngIf="formErrors.id" align="start" class="form__error">
+              {{ formErrors.id }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Primer nombre</mat-label>
+            <input matInput formControlName="nombre" required>
+            <mat-error *ngIf="formErrors.nombre" align="start" class="form__error">
+              {{ formErrors.nombre }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput formControlName="nombre2">
+            <mat-error *ngIf="formErrors.nombre2" align="start" class="form__error">
+              {{ formErrors.nombre2 }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput formControlName="paterno" required>
+            <mat-error *ngIf="formErrors.paterno" align="start" class="form__error">
+              {{ formErrors.paterno }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput formControlName="materno"required>
+            <mat-error *ngIf="formErrors.materno" align="start" class="form__error">
+              {{ formErrors.materno }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>DNI</mat-label>
+            <input matInput formControlName="nroDNI" required>
+            <mat-error *ngIf="formErrors.nroDNI" align="start" class="form__error">
+              {{ formErrors.nroDNI }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Vigencia del DNI</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="vigenciaDNI" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="formErrors.vigenciaDNI" align="start" class="form__error">
+              {{ formErrors.vigenciaDNI }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>RUC</mat-label>
+            <input matInput formControlName="nroRuc">
+            <mat-error *ngIf="formErrors.nroRuc" align="start" class="form__error">
+              {{ formErrors.nroRuc }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Pasaporte</mat-label>
+            <input matInput formControlName="nroPasaporte">
+            <mat-error *ngIf="formErrors.nroPasaporte" align="start" class="form__error">
+              {{ formErrors.nroPasaporte }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Vigencia Pasaporte</mat-label>
+            <input matInput [matDatepicker]="picker2"  formControlName="vigenciaPasaporte">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="formErrors.vigenciaPasaporte" align="start" class="form__error">
+              {{ formErrors.vigenciaPasaporte }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Estado Civil</mat-label>
+            <input matInput formControlName="estadoCivil" required>
+            <mat-error *ngIf="formErrors.estadoCivil" align="start" class="form__error">
+              {{ formErrors.estadoCivil }}
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Género</mat-label>
+            <input matInput formControlName="sexo" required>
+            <mat-error *ngIf="formErrors.sexo" align="start" class="form__error">
+              {{ formErrors.sexo }}
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Fecha de Nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker3" formControlName="fechaNacimiento" required>
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+            <mat-error *ngIf="formErrors.fechaNacimiento" align="start" class="form__error">
+              {{ formErrors.fechaNacimiento }}
+            </mat-error>
+          </mat-form-field>
+          
+        </div>  
+        <div class="col-12 col-md-4">
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>ID</mat-label>
-          <input matInput type="number" maxlength="5" placeholder="ID" formControlName="id">
-          <mat-error *ngIf="formErrors.id" align="start" class="form__error">
-            {{ formErrors.id }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Celular</mat-label>
+            <input matInput #input maxlength="10" formControlName="celular">
+            <mat-hint align="end">{{input.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.celular" align="start" class="form__error">
+                {{ formErrors.celular }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Primer nombre</mat-label>
-          <input matInput placeholder="Primer nombre" formControlName="nombre">
-          <mat-error *ngIf="formErrors.nombre" align="start" class="form__error">
-            {{ formErrors.nombre }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Celular Trabajo</mat-label>
+            <input matInput #input1 maxlength="10" formControlName="celularTrab">
+            <mat-hint align="end">{{input1.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.celularTrab" align="start" class="form__error">
+                {{ formErrors.celularTrab }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Segundo nombre</mat-label>
-          <input matInput placeholder="Segundo nombre" formControlName="nombre2">
-          <mat-error *ngIf="formErrors.nombre2" align="start" class="form__error">
-            {{ formErrors.nombre2 }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Teléfono fijo</mat-label>
+            <input matInput #fijo maxlength="10" formControlName="fijo">
+            <mat-hint align="end">{{fijo.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.fijo" align="start" class="form__error">
+                {{ formErrors.fijo }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Apellido Paterno</mat-label>
-          <input matInput placeholder="Apellido Paterno" formControlName="paterno">
-          <mat-error *ngIf="formErrors.paterno" align="start" class="form__error">
-            {{ formErrors.paterno }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Teléfono de Referencia</mat-label>
+            <input matInput #telefonoRef maxlength="10" formControlName="telefonoRef">
+            <mat-hint align="end">{{telefonoRef.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.telefonoRef" align="start" class="form__error">
+                {{ formErrors.telefonoRef }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Apellido Materno</mat-label>
-          <input matInput placeholder="Apellido Materno" formControlName="materno">
-          <mat-error *ngIf="formErrors.materno" align="start" class="form__error">
-            {{ formErrors.materno }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fijo Trabajo</mat-label>
+            <input matInput #fijoTrab maxlength="10" formControlName="fijoTrab">
+            <mat-hint align="end">{{fijoTrab.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.fijoTrab" align="start" class="form__error">
+                {{ formErrors.fijoTrab }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>DNI</mat-label>
-          <input matInput placeholder="DNI" formControlName="nroDNI">
-          <mat-error *ngIf="formErrors.nroDNI" align="start" class="form__error">
-            {{ formErrors.nroDNI }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Anexo</mat-label>
+            <input matInput #anexo maxlength="10" formControlName="anexo">
+            <mat-hint align="end">{{anexo.value?.length || 0}}/10
+              <mat-error *ngIf="formErrors.anexo" align="start" class="form__error">
+                {{ formErrors.anexo }}
+              </mat-error>
+            </mat-hint>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Vigencia del DNI</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Vigencia del DNI" formControlName="vigenciaDNI">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="formErrors.vigenciaDNI" align="start" class="form__error">
-            {{ formErrors.vigenciaDNI }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="formErrors.email" align="start" class="form__error">
+              {{ formErrors.email }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>RUC</mat-label>
-          <input matInput placeholder="RUC" formControlName="nroRuc">
-          <mat-error *ngIf="formErrors.nroRuc" align="start" class="form__error">
-            {{ formErrors.nroRuc }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Email Trabajo</mat-label>
+            <input matInput formControlName="emailTrab">
+            <mat-error *ngIf="formErrors.emailTrab" align="start" class="form__error">
+              {{ formErrors.emailTrab }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Pasaporte</mat-label>
-          <input matInput placeholder="Pasaporte" formControlName="nroPasaporte">
-          <mat-error *ngIf="formErrors.nroPasaporte" align="start" class="form__error">
-            {{ formErrors.nroPasaporte }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Web</mat-label>
+            <input matInput formControlName="web">      
+            <mat-error *ngIf="formErrors.web" align="start" class="form__error">
+              {{ formErrors.web }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Vigencia Pasaporte</mat-label>
-          <input matInput [matDatepicker]="picker2" placeholder="Vigencia Pasaporte" formControlName="vigenciaPasaporte">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-          <mat-error *ngIf="formErrors.vigenciaPasaporte" align="start" class="form__error">
-            {{ formErrors.vigenciaPasaporte }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Nro de Licenica</mat-label>
+            <input matInput type="number" formControlName="nroLicencia">            
+            <mat-error *ngIf="formErrors.nroLicencia" align="start" class="form__error">
+              {{ formErrors.nroLicencia }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Estado Civil</mat-label>
-          <input matInput placeholder="Estado Civil" formControlName="estadoCivil">
-          <mat-error *ngIf="formErrors.estadoCivil" align="start" class="form__error">
-            {{ formErrors.estadoCivil }}
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Vigencia de Licencia</mat-label>
+            <input matInput [matDatepicker]="licencia" formControlName="vigenciaLicencia">
+            <mat-datepicker-toggle matSuffix [for]="licencia"></mat-datepicker-toggle>
+            <mat-datepicker #licencia></mat-datepicker>
+            <mat-error *ngIf="formErrors.vigenciaLicencia" align="start" class="form__error">
+              {{ formErrors.vigenciaLicencia }}
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Género</mat-label>
-          <input matInput placeholder="Género" formControlName="sexo">
-          <mat-error *ngIf="formErrors.sexo" align="start" class="form__error">
-            {{ formErrors.sexo }}
-          </mat-error>
-        </mat-form-field>
-        
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Fecha de Nacimiento</mat-label>
-          <input matInput placeholder="Fecha de Nacimiento" [matDatepicker]="picker3" formControlName="fechaNacimiento" required>
-          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
-          <mat-error *ngIf="formErrors.fechaNacimiento" align="start" class="form__error">
-            {{ formErrors.fechaNacimiento }}
-          </mat-error>
-        </mat-form-field>
-        
-      </div>  
-      <div class="col-4">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Categoría de Licencia</mat-label>
+            <input matInput maxlength="3" formControlName="catLicencia">
+            <mat-error *ngIf="formErrors.catLicencia" align="start" class="form__error">
+              {{ formErrors.catLicencia }}
+            </mat-error>
+          </mat-form-field>
 
+        </div>
+        <div class="col-12 col-md-4">
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Autogenerado de essalud</mat-label>
+            <input matInput type="number" formControlName="codSalud">
+            <mat-error *ngIf="formErrors.codSalud" align="start" class="form__error">
+              {{ formErrors.codSalud }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Fondo de Pensiones</mat-label>
+            <input matInput maxlength="3" formControlName="fondoPension">
+            <mat-error *ngIf="formErrors.fondoPension" align="start" class="form__error">
+              {{ formErrors.fondoPension }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Id de AFP</mat-label>
+            <input matInput maxlength="3" formControlName="tipoAfp">
+            <mat-error *ngIf="formErrors.tipoAfp" align="start" class="form__error">
+              {{ formErrors.tipoAfp }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Código único del sistema privado de pensiones</mat-label>
+            <input matInput type="numeric" formControlName="cuspp">
+            <mat-error *ngIf="formErrors.cuspp" align="start" class="form__error">
+              {{ formErrors.cuspp }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Profesión actual</mat-label>
+            <input matInput formControlName="profesion">
+            <mat-error *ngIf="formErrors.profesion" align="start" class="form__error">
+              {{ formErrors.profesion }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Peso en kilos</mat-label>
+            <input matInput formControlName="peso">
+            <mat-error *ngIf="formErrors.peso" align="start" class="form__error">
+              {{ formErrors.peso }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Talla en metros</mat-label>
+            <input matInput formControlName="talla">
+            <mat-error *ngIf="formErrors.talla" align="start" class="form__error">
+              {{ formErrors.talla }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Contextura</mat-label>
+            <mat-select placeholder="Color" formControlName="contextura">
+              <mat-option value="delgado">Delgado</mat-option>
+              <mat-option value="normal">Normal</mat-option>
+              <mat-option value="sobrepeso">Sobrepeso</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formErrors.contextura" align="start" class="form__error">
+              {{ formErrors.contextura }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Grupo Sanguíneo</mat-label>
+            <mat-select placeholder="Color" formControlName="grupoSangre">
+              <mat-option value="delgado">Delgado</mat-option>
+              <mat-option value="normal">Normal</mat-option>
+              <mat-option value="sobrepeso">Sobrepeso</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formErrors.grupoSangre" align="start" class="form__error">
+              {{ formErrors.grupoSangre }}
+            </mat-error>
+          </mat-form-field>
+  
+        </div>
+        <button type="submit" [disabled]="!personalForm.valid">Guardar</button>
+        <a routerLink="/personal">Cancelar</a>
       </div>
-      <div class="col-4">
+    </form>
 
-      </div>
-      <button type="submit" [disabled]="!personalForm.valid">Guardar</button>
-      <a routerLink="/personal">Cancelar</a>
-    </div>
-  </form>
+  </div>
 </div>
