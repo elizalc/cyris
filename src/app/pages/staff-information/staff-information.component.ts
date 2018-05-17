@@ -8,6 +8,7 @@ import 'rxjs/add/operator/filter';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Personal } from "../../models/personal.model";
+import { MaterialModule } from "../../material/material.module";
 
 @Component({
   selector: 'app-staff-information',
@@ -22,7 +23,8 @@ export class StaffInformationComponent implements OnInit {
   }
   public modalRef: BsModalRef;
   displayedColumns = ['nombre', 'paterno', 'materno', 'nroDNI', 'estadoCivil', 'fechaNacimiento', 'Acciones'];
-  dataSource = new PersonalDataSource(this.pes);
+  dataSource = new MatTableDataSource<Personal>();
+  //dataSource = new PersonalDataSource(this.pes);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -35,9 +37,14 @@ export class StaffInformationComponent implements OnInit {
 
   ngOnInit() {
     this.pes.getPersonal()
+      .subscribe(data => {
+        this.dataSource.data = data;
+      })
   }
 
   ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;  
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
   }
 
@@ -68,11 +75,11 @@ export class StaffInformationComponent implements OnInit {
     
 
   }
-  // applyFilter(filterValue: string) {
-  //   filterValue = filterValue.trim(); // Remove whitespace
-  //   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-  //   this.dataSource.filter = filterValue;
-  // }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
 }
 

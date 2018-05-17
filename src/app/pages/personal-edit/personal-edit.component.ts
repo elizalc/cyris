@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module';
 import { ActivatedRoute, Router, ParamMap  } from "@angular/router";
@@ -34,16 +34,20 @@ export class PersonalEditComponent implements OnInit {
     .subscribe(
       data =>{
         this.personal = data
-        console.log(this.personal)
+        console.log(data)
         this.personalForm.setValue(
           this.personal
         )
       }
     )
     this.buildForm()
-  
   }
  
+  ngAfterViewInit() {
+    $('#popoverData').popover();
+    $('.popover').popover({ trigger: "hover" });
+  }
+
   editPersonal(): void {
     //const newObject = Object.assign({}, this.personal, this.personalForm.value );
     this.pes.editPersonal(this.personalForm.value,this.id)
@@ -105,7 +109,7 @@ export class PersonalEditComponent implements OnInit {
       'vigenciaDNI': ['', [
 
       ]],
-      'nroRuc': ['', [
+      'nroRUC': ['', [
         Validators.pattern('^[0-9]*$'),
         Validators.maxLength(11)
       ]],
@@ -118,7 +122,7 @@ export class PersonalEditComponent implements OnInit {
       'estadoCivil': ['', [
         Validators.maxLength(20)
       ]],
-      'genero': ['', [
+      'sexo': ['', [
         Validators.maxLength(9)
       ]],
       'fechaNacimiento': ['', [
@@ -223,11 +227,11 @@ export class PersonalEditComponent implements OnInit {
     'materno': '',
     'nroDNI': '',
     'vigenciaDNI': '',
-    'nroRuc': '',
+    'nroRUC': '',
     'nroPasaporte': '',
     'vigenciaPasaporte': '',
     'estadoCivil': '',
-    'genero': '',
+    'sexo': '',
     'fechaNacimiento': '',
     'celular': '',
     'celularTrab': '',
@@ -280,7 +284,7 @@ export class PersonalEditComponent implements OnInit {
     'vigenciaDNI': {
       'required': 'Este campo es obligatorio',
     },
-    'nroRuc': {
+    'nroRUC': {
       'pattern': 'Ingrese un número válido'
     },
     'nroPasaporte': {
@@ -292,7 +296,7 @@ export class PersonalEditComponent implements OnInit {
     'estadoCivil': {
       'required': 'Este campo es obligatorio',
     },
-    'genero': {
+    'sexo': {
       'required': 'Este campo es obligatorio'
     },
     'fechaNacimiento': {

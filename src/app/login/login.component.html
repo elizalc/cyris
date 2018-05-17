@@ -1,27 +1,30 @@
 <div class="container-full full-page">
   <div class="row m-0 h-100">
-    <div class="col-12 col-md-4">
+    <div class="col-12">
       <div class="container-form h-100">
         <div class="center-form">
-          <form [formGroup]="userForm" (ngSubmit)="login()">
+          <form [formGroup]="userForm" (ngSubmit)="login()" class="login">
             <div class="title text-center mb-3">
               <mat-icon class="big-icon">account_circle</mat-icon>
               <p class="font-bold">Recursos Humanos</p>
             </div>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Correo electrónico" formControlName="email" [(ngModel)]="email">
-              <mat-error *ngIf="formErrors.email" align="start" class="form__error">
+            <div class="example-full-width form-group">
+              <input placeholder="Correo electrónico" [className]="formErrors.email ? 'form-control is-invalid' : 'form-control'" formControlName="email" [(ngModel)]="email">
+              <small class="text-danger">
                 {{ formErrors.email }}
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Contraseña" type="password" formControlName="password" [(ngModel)]="password">
-              <mat-error *ngIf="formErrors.password" align="start" class="form__error">
+              </small>
+            </div>
+            <div class="example-full-width form-group">
+              <input placeholder="Contraseña" type="password" [className]="formErrors.password ? 'form-control is-invalid' : 'form-control'" formControlName="password" [(ngModel)]="password">
+              <small class="text-danger">
                 {{ formErrors.password }}
-              </mat-error>
-            </mat-form-field>
-            <button class="mt-3" mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Login</button>
+              </small>
+            </div>
+            <button class="mt-3 btn btn-default btn-primary" type="submit" [disabled]="!userForm.valid">Login</button>
           </form>
+        </div>
+        <div class="img w-25">
+          <img class="img-fluid" src="../../assets/img/Logo final-01.png" alt="">
         </div>
       </div>
     </div>

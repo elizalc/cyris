@@ -96,7 +96,7 @@ export class NewPersonalComponent implements OnInit {
       'vigenciaDNI' : ['', [
         Validators.required
       ]],
-      'nroRuc':['', [
+      'nroRUC':['', [
         Validators.pattern('^[0-9]*$'),
         Validators.maxLength(11)
       ]],
@@ -110,7 +110,7 @@ export class NewPersonalComponent implements OnInit {
         Validators.required,
         Validators.maxLength(20)
       ]],
-      'genero': ['',[
+      'sexo': ['',[
         Validators.required,
         Validators.maxLength(9)
       ]],
@@ -216,11 +216,11 @@ export class NewPersonalComponent implements OnInit {
     'materno': '',
     'nroDNI': '',
     'vigenciaDNI': '',
-    'nroRuc': '',
+    'nroRUC': '',
     'nroPasaporte': '',
     'vigenciaPasaporte': '',
     'estadoCivil': '',
-    'genero': '',
+    'sexo': '',
     'fechaNacimiento': '',
     'celular': '',
     'celularTrab': '',
@@ -273,7 +273,7 @@ export class NewPersonalComponent implements OnInit {
     'vigenciaDNI': {
       'required': 'Este campo es obligatorio',
     },
-    'nroRuc': {
+    'nroRUC': {
       'pattern': 'Ingrese un número válido'
     },
     'nroPasaporte': {
@@ -285,7 +285,7 @@ export class NewPersonalComponent implements OnInit {
     'estadoCivil': {
       'required': 'Este campo es obligatorio',
     },
-    'genero': {
+    'sexo': {
       'required': 'Este campo es obligatorio'
     },
     'fechaNacimiento': {
