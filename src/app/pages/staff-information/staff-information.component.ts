@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { PersonalService } from "../../services/personal.service";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/filter';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Personal } from "../../models/personal.model";
 
@@ -18,6 +20,7 @@ export class StaffInformationComponent implements OnInit {
   public userFilterAll = {
     name: ''
   }
+  public modalRef: BsModalRef;
   displayedColumns = ['nombre', 'paterno', 'materno', 'nroDNI', 'estadoCivil', 'fechaNacimiento', 'Acciones'];
   dataSource = new PersonalDataSource(this.pes);
 
@@ -26,7 +29,8 @@ export class StaffInformationComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
 
   constructor(
-    private pes : PersonalService
+    private pes : PersonalService,
+    private modalService: BsModalService,
   ) { }
 
   ngOnInit() {
@@ -35,6 +39,11 @@ export class StaffInformationComponent implements OnInit {
 
   ngAfterViewInit() {
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+  }
+
+  openModal(template: TemplateRef<any>, user) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    //this.user_delete = user;
   }
 
   showPersonal() {

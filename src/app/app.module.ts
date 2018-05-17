@@ -16,7 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { LayoutModule } from "./layouts/layout.module";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutes } from "./app.routing";
+import { ModalModule } from 'ngx-bootstrap/modal';
 
+import { OnlyNumberDirective } from './directives/only-number.directive';
 import { AuthService } from "./services/auth.service";
 import { PersonalService } from "./services/personal.service";
 import { StaffInformationComponent } from './pages/staff-information/staff-information.component';
@@ -29,7 +31,8 @@ import { PersonalEditComponent } from './pages/personal-edit/personal-edit.compo
     LoginComponent,
     StaffInformationComponent,
     NewPersonalComponent,
-    PersonalEditComponent
+    PersonalEditComponent,
+    OnlyNumberDirective
   ],
   imports: [
     LayoutModule,
@@ -43,7 +46,8 @@ import { PersonalEditComponent } from './pages/personal-edit/personal-edit.compo
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ModalModule
   ],
   providers: [AuthService, PersonalService],
   bootstrap: [AppComponent]

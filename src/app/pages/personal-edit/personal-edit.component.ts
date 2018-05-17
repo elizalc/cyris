@@ -3,6 +3,8 @@ import { FormBuilder, FormsModule, FormGroup, Validators, FormArray } from '@ang
 import { MaterialModule } from '../../material/material.module';
 import { ActivatedRoute, Router, ParamMap  } from "@angular/router";
 import { PersonalService } from "../../services/personal.service";
+import { ToastrService } from 'ngx-toastr';
+declare var $: any;
 
 @Component({
   selector: 'app-personal-edit',
@@ -14,11 +16,13 @@ export class PersonalEditComponent implements OnInit {
   public personalForm: FormGroup
   public id: number
   public personal: Object
+  public imagen = ''
 
   constructor(
     private fb: FormBuilder,
     private pes: PersonalService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -47,9 +51,35 @@ export class PersonalEditComponent implements OnInit {
       )  
   }
 
+  fileChangeEvent(fileInput: any) {
+    var file = fileInput.target.files;
+    console.log(file);
+    const fileExtension = file[0].name.substr(file[0].name.length - 3);
+    if (fileExtension != "png" && fileExtension != 'jpg') {
+      this.toastr.error('Contraseña incorrecta', 'Intenta otra vez', {
+        timeOut: 3000,
+      })
+    } else {
+      let size = file[0].size / 1024 / 1024;
+      console.log(size);
+      if (size > 5) {
+        this.toastr.error('La foto supera el máximo de tamaño permitido 5MB')
+      } else {
+        //var user = this.user;
+        var imagen = this.imagen;
+        var reader = new FileReader();
+        reader.onload = function (e: any) {
+          $('#preview').attr('src', e.target.result);
+          imagen = e.target.result;
+          //user.image = e.target.result.split(',')[1];
+        }
+        reader.readAsDataURL(file[0]);
+      }
+    }
+  }
+
   //construye el formulario
   buildForm(): void {
-    
     this.personalForm = this.fb.group({
       'id': ['', [
         Validators.pattern('^[0-9]*$')
@@ -61,9 +91,11 @@ export class PersonalEditComponent implements OnInit {
         Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
       ]],
       'paterno': ['', [
+        Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
 
       ]],
       'materno': ['', [
+        Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
       ]],
       'nroDNI': ['', [
         Validators.pattern('^[0-9]*$')
@@ -82,11 +114,9 @@ export class PersonalEditComponent implements OnInit {
       'vigenciaPasaporte': ['', [
       ]],
       'estadoCivil': ['', [
-
         Validators.maxLength(20)
       ]],
-      'sexo': ['', [
-
+      'genero': ['', [
         Validators.maxLength(9)
       ]],
       'fechaNacimiento': ['', [
@@ -104,7 +134,7 @@ export class PersonalEditComponent implements OnInit {
       'telefonoRef': ['', [
         Validators.maxLength(11)
       ]],
-      'fijoTran': ['', [
+      'fijoTrab': ['', [
         Validators.maxLength(11)
       ]],
       'anexo': ['', [
@@ -195,7 +225,7 @@ export class PersonalEditComponent implements OnInit {
     'nroPasaporte': '',
     'vigenciaPasaporte': '',
     'estadoCivil': '',
-    'sexo': '',
+    'genero': '',
     'fechaNacimiento': '',
     'celular': '',
     'celularTrab': '',
@@ -260,7 +290,7 @@ export class PersonalEditComponent implements OnInit {
     'estadoCivil': {
       'required': 'Este campo es obligatorio',
     },
-    'sexo': {
+    'genero': {
       'required': 'Este campo es obligatorio'
     },
     'fechaNacimiento': {

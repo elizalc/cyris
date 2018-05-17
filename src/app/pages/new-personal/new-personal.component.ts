@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module';
 import { PersonalService } from "../../services/personal.service";
+import { ToastrService } from 'ngx-toastr';
+declare var $: any;
 
 @Component({
   selector: 'app-new-personal',
@@ -11,10 +13,12 @@ import { PersonalService } from "../../services/personal.service";
 export class NewPersonalComponent implements OnInit {
 
   public personalForm: FormGroup;
+  public imagen = '';
 
   constructor(
     private fb: FormBuilder,
-    private pes: PersonalService
+    private pes: PersonalService,
+    private toastr: ToastrService
   ) { }
 
   ngOnChanges() {
@@ -31,6 +35,34 @@ export class NewPersonalComponent implements OnInit {
     this.pes.addPersonal(this.personalForm.value)
       .subscribe(data=>console.log(data))
   }
+
+  fileChangeEvent(fileInput: any) {
+    var file = fileInput.target.files;
+    console.log(file);
+    const fileExtension = file[0].name.substr(file[0].name.length - 3);
+    if (fileExtension != "png" && fileExtension != 'jpg') {
+      this.toastr.error('Contraseña incorrecta', 'Intenta otra vez', {
+        timeOut: 3000,
+      })
+    } else {
+      let size = file[0].size / 1024 / 1024;
+      console.log(size);
+      if (size > 5) {
+        this.toastr.error('La foto supera el máximo de tamaño permitido 5MB')
+      } else {
+        //var user = this.user;
+        var imagen = this.imagen;
+        var reader = new FileReader();
+        reader.onload = function (e: any) {
+          $('#preview').attr('src', e.target.result);
+          imagen = e.target.result;
+          //user.image = e.target.result.split(',')[1];
+        }
+        reader.readAsDataURL(file[0]);
+      }
+    }
+  }
+
   //construye el formulario
   buildForm(): void {
     this.personalForm = this.fb.group({
@@ -47,10 +79,12 @@ export class NewPersonalComponent implements OnInit {
       ]],
       'paterno': ['', [
         Validators.required,
+        Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
       
       ]],
       'materno': ['', [
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
       ]],
       'nroDNI': ['', [
         Validators.pattern('^[0-9]*$'),
@@ -73,7 +107,7 @@ export class NewPersonalComponent implements OnInit {
         Validators.required,
         Validators.maxLength(20)
       ]],
-      'sexo': ['',[
+      'genero': ['',[
         Validators.required,
         Validators.maxLength(9)
       ]],
@@ -183,7 +217,7 @@ export class NewPersonalComponent implements OnInit {
     'nroPasaporte': '',
     'vigenciaPasaporte': '',
     'estadoCivil': '',
-    'sexo': '',
+    'genero': '',
     'fechaNacimiento': '',
     'celular': '',
     'celularTrab': '',
@@ -248,7 +282,7 @@ export class NewPersonalComponent implements OnInit {
     'estadoCivil': {
       'required': 'Este campo es obligatorio',
     },
-    'sexo': {
+    'genero': {
       'required': 'Este campo es obligatorio'
     },
     'fechaNacimiento': {

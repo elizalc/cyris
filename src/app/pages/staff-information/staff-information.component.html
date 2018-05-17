@@ -45,11 +45,25 @@
 
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let personal"> <a [routerLink]="['/personal/editar', personal.id ]">Editar </a> <a (click)="deletePersonal(personal.id)"> Borrar</a> </td>
+        <td mat-cell *matCellDef="let personal"> <a [routerLink]="['/personal/editar', personal.id ]">Editar </a> <a (click)="deletePersonal(personal.id)"> Borrar</a> <button (click)="openModal(template)">hola</button></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <ng-template #template>
+        <div class="modal-body popup-finish">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3>¿Estás seguro que desea eliminar este usuario?</h3>
+          <div class="actions">
+            <a class="btn btn-air text-white btn-green" (click)="deletePersonal(personal.id)">Sí</a>
+            <button _ngcontent-c1="" (click)="modalRef.hide()" class="btn btn-danger">No</button>
+          </div>
+        </div>
+      </ng-template>
     </table>
+
   </div>
 </div>
