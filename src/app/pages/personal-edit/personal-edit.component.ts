@@ -21,6 +21,7 @@ export class PersonalEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private pes: PersonalService,
+    private router: Router,
     private route: ActivatedRoute,
     private toastr: ToastrService
   ) { }
@@ -49,6 +50,7 @@ export class PersonalEditComponent implements OnInit {
       .subscribe(
         data=> console.log(data)
       )  
+    this.router.navigate(['/personal']);
   }
 
   fileChangeEvent(fileInput: any) {

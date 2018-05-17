@@ -1,5 +1,8 @@
 <div class="container">
-  <a routerLink="/nuevo-personal" type="button" class="btn btn-blue-grey mt-5">Nuevo Personal</a>
+  <div class="table-header">
+
+    <a routerLink="/nuevo-personal" type="button" class="btn-new mt-5">Nuevo Personal</a>
+  </div>
   <div class="example-container mat-elevation-z8 mt-5">
     <div class="example-header">
       <!-- <mat-form-field>
@@ -45,7 +48,7 @@
 
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let personal"> <a [routerLink]="['/personal/editar', personal.id ]">Editar </a> <a (click)="deletePersonal(personal.id)"> Borrar</a> <button (click)="openModal(template)">hola</button></td>
+        <td mat-cell *matCellDef="let personal"> <a class="action-links" [routerLink]="['/personal/editar', personal.id ]">Editar </a> <a  href="javascript:void(0)" class="action-links" (click)="deletePersonal(personal.id)"> Borrar</a></td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

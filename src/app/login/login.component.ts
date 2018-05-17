@@ -72,13 +72,13 @@ export class LoginComponent implements OnInit {
 
   validationMessages = {
     'email': {
-      'required': 'Email is required',
-      'pattern': 'Email is invalid'
+      'required': 'Este campoes obligatorio',
+      'pattern': 'Ingrese un email válido'
     },
     'password': {
-      'required': 'Password is required',
+      'required': 'Este campo es obligatorio',
       'minlength': 'Debe tener 6 caracteres como mínimo',
-      'maxlength': 'Password cannot be more than 40 characters long.',
+      'maxlength': 'La contraseña no puede exceder los 40 caracteres',
     }
   };
 

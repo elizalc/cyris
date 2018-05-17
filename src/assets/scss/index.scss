@@ -6,6 +6,159 @@
 body {
   background: #ececec;
 }
-table{
+
+table {
   width: 100%;
+}
+
+//Login
+.big-icon {
+  font-size: 3rem;
+  height: 50px !important;
+  width: 50px !important;
+  color: #5c549c;
+}
+
+.example-full-width {
+  margin-bottom: 1rem;
+  width: 250px;
+}
+
+.full-page {
+  height: 100vh;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.container-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .center-form {
+    background: white;
+    form {
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 2px 2px 2px #d0d0d0c2;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 4rem;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #151325;
+  color: white;
+  font-size: 13px;
+}
+
+.footer-shared {
+  width: 100%;
+  bottom: 0;
+  background: #151325;
+  color: white;
+  font-size: 13px;
+}
+
+//Navbar
+.navbar{
+  font-family: 'Montserrat', sans-serif;
+  background: #3f5979;
+  color: white;
+  .title-nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .navbar-brand{
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .logout{
+      font-size: 12px;
+      &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+  .navbar-nav{
+    .nav-item{
+      display: inline-block;
+      max-width: 100px;
+      &.active{
+        background: #ececec;
+        color: #3f5979;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+      }
+      .nav-link{
+        padding: 0;
+      }
+    }
+  }
+}
+
+//Listar Personal
+
+.table-header{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-new{
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #6587b1;
+  color: white;
+  font-family: 'Montserrat';
+  border: 1px solid #6587b1;
+  &:hover{
+    color: white;
+    text-decoration: none;
+    background: #3f5979;
+    transition: all ease .5s;
+  }
+}
+
+.action-links{
+  color: #0e62ca;
+  &:hover{
+    cursor: pointer;
+    color: #0a3469;
+  }
+}
+
+//Nuevo y Editar Personal
+
+.bg-white{
+  padding: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  font-family: 'Montserrat', sans-serif;
+  h3{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  label{
+    font-size:13px;
+    font-weight: 500;
+    color: #535353;
+    span{
+      color:red;
+    }
+  }
+  input, select{
+    font-size: 14px;
+  }
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { PersonalService } from "../../services/personal.service";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/filter';
-import { BsModalService } from 'ngx-bootstrap/modal';
+// import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Personal } from "../../models/personal.model";
@@ -30,7 +30,7 @@ export class StaffInformationComponent implements OnInit {
 
   constructor(
     private pes : PersonalService,
-    private modalService: BsModalService,
+    private changeDetectorRefs: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -41,10 +41,10 @@ export class StaffInformationComponent implements OnInit {
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
   }
 
-  openModal(template: TemplateRef<any>, user) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-    //this.user_delete = user;
-  }
+  // openModal(template: TemplateRef<any>, user) {
+  //   this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  //   //this.user_delete = user;
+  // }
 
   showPersonal() {
     console.log('algo')
@@ -59,9 +59,15 @@ export class StaffInformationComponent implements OnInit {
       .subscribe(
         data=> console.log(data)
       )
-    this.pes.getPersonal()
+    this.refresh()
   }
+  
+  refresh() {
+  
+      this.changeDetectorRefs.detectChanges();
+    
 
+  }
   // applyFilter(filterValue: string) {
   //   filterValue = filterValue.trim(); // Remove whitespace
   //   filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches

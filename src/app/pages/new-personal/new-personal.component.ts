@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router"
 import { FormBuilder, FormsModule, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MaterialModule } from '../../material/material.module';
 import { PersonalService } from "../../services/personal.service";
@@ -18,7 +19,8 @@ export class NewPersonalComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private pes: PersonalService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnChanges() {
@@ -34,6 +36,7 @@ export class NewPersonalComponent implements OnInit {
   addPersonal(): void {
     this.pes.addPersonal(this.personalForm.value)
       .subscribe(data=>console.log(data))
+    this.router.navigate(['/personal']);
   }
 
   fileChangeEvent(fileInput: any) {
