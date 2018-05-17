@@ -36,6 +36,7 @@ export class StaffInformationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refresh()
     this.pes.getPersonal()
       .subscribe(data => {
         this.dataSource.data = data;
@@ -70,10 +71,10 @@ export class StaffInformationComponent implements OnInit {
   }
   
   refresh() {
-  
-      this.changeDetectorRefs.detectChanges();
-    
-
+    this.pes.getPersonal()
+      .subscribe(data => {
+        this.dataSource.data = data;
+      })
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
