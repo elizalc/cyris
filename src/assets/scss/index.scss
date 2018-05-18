@@ -198,3 +198,20 @@ table{
     }
   }
 }
+
+.modal-body{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  h3{
+    font-size: 14px;
+  }
+  .btn-green{
+    background: #3b893b;
+    padding: 0.4rem 1rem;
+    text-transform: uppercase;
+  }
+  .btn{
+    margin: 0 1rem;
+  }
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef, Inject, OnChanges, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { PersonalService } from "../../services/personal.service";
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +8,7 @@ import 'rxjs/add/operator/filter';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DataSource } from '@angular/cdk/collections';
 import { Personal } from "../../models/personal.model";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MaterialModule } from "../../material/material.module";
 
 @Component({
@@ -15,7 +16,7 @@ import { MaterialModule } from "../../material/material.module";
   templateUrl: './staff-information.component.html',
   styleUrls: ['./staff-information.component.css']
 })
-export class StaffInformationComponent implements OnInit {
+export class StaffInformationComponent implements OnInit, OnChanges, AfterViewInit {
 
   public allPersonal= []
   public userFilterAll = {
@@ -31,6 +32,7 @@ export class StaffInformationComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
 
   constructor(
+    public dialog: MatDialog,
     private pes : PersonalService,
     private changeDetectorRefs: ChangeDetectorRef
   ) { }
@@ -48,11 +50,19 @@ export class StaffInformationComponent implements OnInit {
     this.dataSource.sort = this.sort;  
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
   }
+  ngOnChanges(){
+    this.refresh()
+  }
+  openModal(id):void{
+    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: { id: id }
+    });
 
-  // openModal(template: TemplateRef<any>, user) {
-  //   this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-  //   //this.user_delete = user;
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   showPersonal() {
     console.log('algo')
@@ -86,6 +96,7 @@ export class StaffInformationComponent implements OnInit {
 
 export class PersonalDataSource extends DataSource<any> {
 
+
   constructor(private pes: PersonalService) {
     super();
   }
@@ -93,4 +104,34 @@ export class PersonalDataSource extends DataSource<any> {
     return this.pes.getPersonal();
   }
   disconnect() { }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+
+  dataSource = new MatTableDataSource<Personal>();
+
+  constructor(
+    private pes: PersonalService,
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+    this.pes.getPersonal()
+      .subscribe(data => {
+        this.dataSource.data = data;
+      })
+  }
+  deletePersonal(id): void {
+    this.pes.deletePersonal(id)
+      .subscribe(
+        data => console.log(data)
+      )
+    this.onNoClick()
+  }
+ 
 }
