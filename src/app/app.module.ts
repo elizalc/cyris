@@ -53,6 +53,6 @@ import { ModalComponent } from './modals/modal/modal.component';
     ModalModule
   ],
   providers: [AuthService, PersonalService],
-  bootstrap: [AppComponent, DialogOverviewExampleDialog]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
