@@ -44,8 +44,8 @@ export class PersonalEditComponent implements OnInit {
   }
  
   ngAfterViewInit() {
-    $('#popoverData').popover();
-    $('.popover').popover({ trigger: "hover" });
+    // $('#popoverData').popover();
+    // $('.popover').popover({ trigger: "hover" });
   }
 
   editPersonal(): void {
@@ -87,7 +87,7 @@ export class PersonalEditComponent implements OnInit {
   //construye el formulario
   buildForm(): void {
     this.personalForm = this.fb.group({
-      'id': ['', [
+      'idpersona': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
       'nombre': ['', [
@@ -103,44 +103,44 @@ export class PersonalEditComponent implements OnInit {
       'materno': ['', [
         Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1])[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
       ]],
-      'nroDNI': ['', [
+      'nrodni': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
-      'vigenciaDNI': ['', [
+      'vigenciadni': ['', [
 
       ]],
-      'nroRUC': ['', [
+      'nroruc': ['', [
         Validators.pattern('^[0-9]*$'),
         Validators.maxLength(11)
       ]],
-      'nroPasaporte': ['', [
+      'nropasaporte': ['', [
         Validators.pattern('^[0-9]*$'),
         Validators.maxLength(15)
       ]],
-      'vigenciaPasaporte': ['', [
+      'vigenciapasaporte': ['', [
       ]],
-      'estadoCivil': ['', [
+      'estadocivil': ['', [
         Validators.maxLength(20)
       ]],
       'sexo': ['', [
         Validators.maxLength(9)
       ]],
-      'fechaNacimiento': ['', [
+      'fechanacimiento': ['', [
 
       ]],
       'celular': ['', [
         Validators.maxLength(11)
       ]],
-      'celularTrab': ['', [
+      'celulartrab': ['', [
         Validators.maxLength(11)
       ]],
       'fijo': ['', [
         Validators.maxLength(11)
       ]],
-      'telefonoRef': ['', [
+      'telefonoref': ['', [
         Validators.maxLength(11)
       ]],
-      'fijoTrab': ['', [
+      'fijotrab': ['', [
         Validators.maxLength(11)
       ]],
       'anexo': ['', [
@@ -150,29 +150,29 @@ export class PersonalEditComponent implements OnInit {
         Validators.email,
         Validators.maxLength(30)
       ]],
-      'emailTrab': ['', [
+      'emailtrab': ['', [
         Validators.email,
         Validators.maxLength(30)
       ]],
       'web': ['', [
         Validators.maxLength(40)
       ]],
-      'nroLicencia': ['', [
+      'nrolicencia': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
-      'vigenciaLicencia': ['', [
+      'vigencialicencia': ['', [
 
       ]],
-      'catLicencia': ['', [
+      'catlicencia': ['', [
         Validators.maxLength(3)
       ]],
-      'codSalud': ['', [
+      'codsalud': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
-      'fondoPension': ['', [
+      'fondopension': ['', [
         Validators.maxLength(3)
       ]],
-      'tipoAfp': ['', [
+      'tipoafp': ['', [
         Validators.maxLength(3)
       ]],
       'cuspp': ['', [
@@ -190,7 +190,7 @@ export class PersonalEditComponent implements OnInit {
       'contextura': ['', [
         Validators.maxLength(15)
       ]],
-      'grupoSangre': ['', [
+      'gruposangre': ['', [
         Validators.maxLength(15)
       ]],
       'foto': ['', [
@@ -220,45 +220,45 @@ export class PersonalEditComponent implements OnInit {
   }
 
   formErrors = {
-    'id': '',
+    'idpersona': '',
     'nombre': '',
     'nombre2': '',
     'paterno': '',
     'materno': '',
-    'nroDNI': '',
-    'vigenciaDNI': '',
-    'nroRUC': '',
-    'nroPasaporte': '',
-    'vigenciaPasaporte': '',
-    'estadoCivil': '',
+    'nrodni': '',
+    'vigenciadni': '',
+    'nroruc': '',
+    'nropasaporte': '',
+    'vigenciapasaporte': '',
+    'estadocivil': '',
     'sexo': '',
-    'fechaNacimiento': '',
+    'fechanacimiento': '',
     'celular': '',
-    'celularTrab': '',
+    'celulartrab': '',
     'fijo': '',
-    'telefonoRef': '',
-    'fijoTrab': '',
+    'telefonoref': '',
+    'fijotrab': '',
     'anexo': '',
     'email': '',
-    'emailTrab': '',
+    'emailtrab': '',
     'web': '',
-    'nroLicencia': '',
-    'vigenciaLicencia': '',
-    'catLicencia': '',
-    'codSalud': '',
-    'fondoPension': '',
-    'tipoAfp': '',
+    'nrolicencia': '',
+    'vigencialicencia': '',
+    'catlicencia': '',
+    'codsalud': '',
+    'fondopension': '',
+    'tipoafp': '',
     'cuspp': '',
     'profesion': '',
     'peso': '',
     'talla': '',
     'contextura': '',
-    'grupoSangre': '',
+    'gruposangre': '',
     'foto': ''
   };
 
   validationMessages = {
-    'id': {
+    'idpersona': {
       'required': 'Este campo es obligatorio',
       'pattern': 'Solo números'
     },
@@ -277,44 +277,44 @@ export class PersonalEditComponent implements OnInit {
       'required': 'Este campo es obligatorio',
       'pattern': 'Ingrese un apellido válido'
     },
-    'nroDNI': {
+    'nrodni': {
       'pattern': 'Ingrese un número válido',
       'required': 'Este campo es obligatorio'
     },
-    'vigenciaDNI': {
+    'vigenciadni': {
       'required': 'Este campo es obligatorio',
     },
-    'nroRUC': {
+    'nroruc': {
       'pattern': 'Ingrese un número válido'
     },
-    'nroPasaporte': {
+    'nropasaporte': {
       'pattern': 'Ingrese un número válido'
     },
-    'vigenciaPasaporte': {
+    'vigenciapasaporte': {
 
     },
-    'estadoCivil': {
+    'estadocivil': {
       'required': 'Este campo es obligatorio',
     },
     'sexo': {
       'required': 'Este campo es obligatorio'
     },
-    'fechaNacimiento': {
+    'fechanacimiento': {
       'required': 'Este campo es obligatorio'
     },
     'celular': {
       'maxLength': 'Puede tener hasta 9 dígitos'
     },
-    'celularTrab': {
+    'celulartrab': {
       'maxLength': 'Puede tener hasta 9 dígitos'
     },
     'fijo': {
       'maxLength': 'Puede tener hasta 9 dígitos'
     },
-    'telefonoRef': {
+    'telefonoref': {
       'maxLength': 'Puede tener hasta 9 dígitos'
     },
-    'fijoTrab': {
+    'fijotrab': {
       'maxLength': 'Puede tener hasta 9 dígitos'
     },
     'anexo': {
@@ -323,28 +323,28 @@ export class PersonalEditComponent implements OnInit {
     'email': {
       'email': 'Ingrese un email válido'
     },
-    'emailTrab': {
+    'emailtrab': {
       'email': 'Ingrese un email válido'
     },
     'web': {
       'maxLength': 'Puede tener hasta 40 carácteres'
     },
-    'nroLicencia': {
+    'nrolicencia': {
       'pattern': 'Ingrese un número válido'
     },
-    'vigenciaLicencia': {
+    'vigencialicencia': {
 
     },
-    'catLicencia': {
+    'catlicencia': {
       'maxLength': 'Puede tener hasta 3 digitos'
     },
-    'codSalud': {
+    'codsalud': {
       'pattern': 'Ingrese un número válido'
     },
-    'fondoPension': {
+    'fondopension': {
       'maxLength': 'Puede tener hasta 3 digitos'
     },
-    'tipoAfp': {
+    'tipoafp': {
       'maxLength': 'Puede tener hasta 3 digitos'
     },
     'cuspp': {
@@ -362,7 +362,7 @@ export class PersonalEditComponent implements OnInit {
     'contextura': {
       'maxLength': 'Puede tener hasta 15 digitos'
     },
-    'grupoSangre': {
+    'gruposangre': {
       'maxLength': 'Puede tener hasta 3 digitos'
     },
     'foto': {

@@ -9,11 +9,11 @@
           <div class="form-group">
             <label for="id" class="col-form-label">Nro ID (solo para desarrollo)</label>
             <div class="">
-              <input type="number" [className]="formErrors.id ? 'form-control is-invalid' : 'form-control'" class="form-control" id="id"
-                formControlName="id" OnlyNumber="true">
+              <input type="number" [className]="formErrors.idpersona ? 'form-control is-invalid' : 'form-control'" class="form-control" id="id"
+                formControlName="idpersona" OnlyNumber="true">
               <p class="error-msg" *ngIf="formErrors.id">
                 <small class="text-danger">
-                  {{ formErrors.id }}
+                  {{ formErrors.idpersona }}
                 </small>
               </p>
             </div>
@@ -604,58 +604,58 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Número de DNI *" [className]="formErrors.nroDNI ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="nroDNI" OnlyNumber="true" maxlength="8" formControlName="nroDNI">
+              <input type="text" placeholder="Número de DNI *" [className]="formErrors.nrodni ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="nrodni" OnlyNumber="true" maxlength="8" formControlName="nrodni">
               <small class="text-danger">
-                {{ formErrors.nroDNI }}
+                {{ formErrors.nrodni }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <input type="date" placeholder="Vigencia del documento de identidad *" [className]="formErrors.vigenciaDNI ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="vigenciaDNI" OnlyNumber="true" formControlName="vigenciaDNI">
+              <input type="date" placeholder="Vigencia del documento de identidad *" [className]="formErrors.vigenciadni ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="vigenciaDNI" OnlyNumber="true" formControlName="vigenciadni">
               <small class="text-danger">
-                {{ formErrors.vigenciaDNI }}
+                {{ formErrors.vigenciadni }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Número de RUC" [className]="formErrors.nroRUC ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="nroRUC" maxlength="11" OnlyNumber="true" formControlName="nroRUC">
+              <input type="text" placeholder="Número de RUC" [className]="formErrors.nroruc ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="nroRUC" maxlength="11" OnlyNumber="true" formControlName="nroruc">
               <small class="text-danger">
-                {{ formErrors.nroRUC }}
+                {{ formErrors.nroruc }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Número de Pasaporte" [className]="formErrors.nroPasaporte ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="nroPasaporte" maxlength="15" OnlyNumber="true" formControlName="nroPasaporte">
+              <input type="text" placeholder="Número de Pasaporte" [className]="formErrors.nropasaporte ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="nroPasaporte" maxlength="15" OnlyNumber="true" formControlName="nropasaporte">
               <small class="text-danger">
-                {{ formErrors.nroPasaporte }}
+                {{ formErrors.nropasaporte }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <input placeholder="Vigencia de Pasaporte" type="date" [className]="formErrors.vigenciaPasaporte ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="vigenciaPasaporte" OnlyNumber="true" formControlName="vigenciaPasaporte">
+              <input placeholder="Vigencia de Pasaporte" type="date" [className]="formErrors.vigenciapasaporte ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="vigenciaPasaporte" OnlyNumber="true" formControlName="vigenciapasaporte">
               <small class="text-danger">
-                {{ formErrors.vigenciaPasaporte }}
+                {{ formErrors.vigenciapasaporte }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <select [className]="formErrors.estadoCivil ? 'form-control is-invalid' : 'form-control'" class="form-control" id="estadoCivil"
-                formControlName="estadoCivil">
+              <select [className]="formErrors.estadocivil ? 'form-control is-invalid' : 'form-control'" class="form-control" id="estadoCivil"
+                formControlName="estadocivil">
                 <option value="" selected>Estado Civil *</option>
                 <option value="soltero">soltero</option>
                 <option value="casado">casado</option>
@@ -665,7 +665,7 @@
                 <option value="separado">separado</option>
               </select>
               <small class="text-danger">
-                {{ formErrors.estadoCivil }}
+                {{ formErrors.estadocivil }}
               </small>
             </div>
           </div>
@@ -685,10 +685,10 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="date" [className]="formErrors.fechaNacimiento ? 'form-control is-invalid' : 'form-control'" class="form-control"
-                id="fechaNacimiento" OnlyNumber="true" formControlName="fechaNacimiento">
+              <input type="date" [className]="formErrors.fechanacimiento ? 'form-control is-invalid' : 'form-control'" class="form-control"
+                id="fechaNacimiento" OnlyNumber="true" formControlName="fechanacimiento">
               <small class="text-danger">
-                {{ formErrors.fechaNacimiento }}
+                {{ formErrors.fechanacimiento }}
               </small>
             </div>
           </div>
@@ -706,10 +706,10 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Número del celular del trabajo" [className]="formErrors.celularTrab ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="celularTrab" maxlength="9" OnlyNumber="true" formControlName="celularTrab">
+              <input type="text" placeholder="Número del celular del trabajo" [className]="formErrors.celulartrab ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="celularTrab" maxlength="9" OnlyNumber="true" formControlName="celulartrab">
               <small class="text-danger">
-                {{ formErrors.celularTrab }}
+                {{ formErrors.celulartrab }}
               </small>
             </div>
           </div>
@@ -726,20 +726,20 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Teléfono de referencia en caso de emergencia" [className]="formErrors.telefonoRef ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="telefonoRef" maxlength="11" OnlyNumber="true" formControlName="fijo">
+              <input type="text" placeholder="Teléfono de referencia en caso de emergencia" [className]="formErrors.telefonoref ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="telefonoRef" maxlength="11" OnlyNumber="true" formControlName="telefonoref">
               <small class="text-danger">
-                {{ formErrors.telefonoRef }}
+                {{ formErrors.telefonoref }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Teléfono Fijo del Trabajo" [className]="formErrors.fijoTrab ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="fijoTrab" maxlength="11" OnlyNumber="true" formControlName="fijoTrab">
+              <input type="text" placeholder="Teléfono Fijo del Trabajo" [className]="formErrors.fijotrab ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="fijoTrab" maxlength="11" OnlyNumber="true" formControlName="fijotrab">
               <small class="text-danger">
-                {{ formErrors.fijoTrab }}
+                {{ formErrors.fijotrab }}
               </small>
             </div>
           </div>
@@ -766,10 +766,10 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="email" placeholder="Email del Trabajo" [className]="formErrors.emailTrab ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" id="emailTrab" formControlName="emailTrab">
+              <input type="email" placeholder="Email del Trabajo" [className]="formErrors.emailtrab ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" id="emailTrab" formControlName="emailtrab">
               <small class="text-danger">
-                {{ formErrors.emailTrab }}
+                {{ formErrors.emailtrab }}
               </small>
             </div>
           </div>
@@ -786,10 +786,10 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Número de Licencia de conducir" [className]="formErrors.email ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" OnlyNumber="true" id="nroLicencia" formControlName="nroLicencia">
+              <input type="text" placeholder="Número de Licencia de conducir" [className]="formErrors.nrolicencia ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" OnlyNumber="true" id="nroLicencia" formControlName="nrolicencia">
               <small class="text-danger">
-                {{ formErrors.nroLicencia }}
+                {{ formErrors.nrolicencia }}
               </small>
             </div>
           </div>
@@ -797,18 +797,18 @@
       
           <div class="col-12">
             <div class="form-group">
-              <input type="date" [className]="formErrors.vigenciaLicencia ? 'form-control is-invalid' : 'form-control'" class="form-control"
-                id="vigenciaLicencia" OnlyNumber="true" formControlName="vigenciaLicencia">
+              <input type="date" [className]="formErrors.vigencialicencia ? 'form-control is-invalid' : 'form-control'" class="form-control"
+                id="vigenciaLicencia" OnlyNumber="true" formControlName="vigencialicencia">
               <small class="text-danger">
-                {{ formErrors.vigenciaLicencia }}
+                {{ formErrors.vigencialicencia }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <select type="text" [className]="formErrors.catLicencia ? 'form-control is-invalid' : 'form-control'" class="form-control"
-                id="catLicencia" formControlName="catLicencia">
+              <select type="text" [className]="formErrors.catlicencia ? 'form-control is-invalid' : 'form-control'" class="form-control"
+                id="catLicencia" formControlName="catlicencia">
                 <option value="" selected>Categoría de licencia de conducir</option>
                 <option value="A1">A1</option>
                 <option value="A2">A2</option>
@@ -817,7 +817,7 @@
                 <option value="B2">B2</option>
               </select>
               <small class="text-danger">
-                {{ formErrors.catLicencia }}
+                {{ formErrors.catlicencia }}
               </small>
             </div>
           </div>
@@ -825,31 +825,31 @@
         <div class="col-12 col-md-4">
           <div class="col-12">
             <div class="form-group">
-              <input type="text" placeholder="Autogenerado de Essalud" [className]="formErrors.codSalud ? 'form-control is-invalid' : 'form-control'"
-                class="form-control" OnlyNumber="true" id="codSalud" formControlName="codSalud">
+              <input type="text" placeholder="Autogenerado de Essalud" [className]="formErrors.codsalud ? 'form-control is-invalid' : 'form-control'"
+                class="form-control" OnlyNumber="true" id="codSalud" formControlName="codsalud">
               <small class="text-danger">
-                {{ formErrors.codSalud }}
+                {{ formErrors.codsalud }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <select [className]="formErrors.fondoPension ? 'form-control is-invalid' : 'form-control'" class="form-control" id="fondoPension"
-                formControlName="fondoPension">
+              <select [className]="formErrors.fondopension ? 'form-control is-invalid' : 'form-control'" class="form-control" id="fondoPension"
+                formControlName="fondopension">
                 <option value="" selected>Fondo de Pensiones</option>
                 <option value="AFP">AFP</option>
                 <option value="ONP">ONP</option>
               </select>
               <small class="text-danger">
-                {{ formErrors.fondoPension }}
+                {{ formErrors.fondopension }}
               </small>
             </div>
           </div>
       
           <div class="col-12">
             <div class="form-group">
-              <select [className]="formErrors.tipoAfp ? 'form-control is-invalid' : 'form-control'" class="form-control" id="tipoAfp" formControlName="tipoAfp">
+              <select [className]="formErrors.tipoafp ? 'form-control is-invalid' : 'form-control'" class="form-control" id="tipoAfp" formControlName="tipoafp">
                 <option value="" selected>Id de AFP</option>
                 <option value="AHB">AHB</option>
                 <option value="AFP">AFP</option>
@@ -861,7 +861,7 @@
                 <option value="CSS">CSS</option>
               </select>
               <small class="text-danger">
-                {{ formErrors.tipoAfp }}
+                {{ formErrors.tipoafp }}
               </small>
             </div>
           </div>
@@ -923,8 +923,8 @@
       
           <div class="col-12">
             <div class="form-group">
-              <select type="text" [className]="formErrors.grupoSangre ? 'form-control is-invalid' : 'form-control'" class="form-control"
-                id="grupoSangre" formControlName="grupoSangre">
+              <select type="text" [className]="formErrors.gruposangre ? 'form-control is-invalid' : 'form-control'" class="form-control"
+                id="grupoSangre" formControlName="gruposangre">
                 <option value="" selected>Grupo Sanguíneo</option>
                 <option value="O+">O+</option>
                 <option value="O-">O-</option>
@@ -936,7 +936,7 @@
                 <option value="AB-">AB-</option>
               </select>
               <small class="text-danger">
-                {{ formErrors.grupoSangre }}
+                {{ formErrors.gruposangre }}
               </small>
             </div>
           </div>
