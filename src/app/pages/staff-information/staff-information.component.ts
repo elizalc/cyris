@@ -57,12 +57,13 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
   
   openDialog(id) {
     let dialogRef = this.dialog.open(ModalComponent, {
-      width: '600px',
+      width: '400px',
       data: { id: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
+      this.refresh()
       //this.dialogResult = result;
     });
   }
@@ -87,6 +88,7 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
     this.pes.getPersonal()
       .subscribe(data => {
         this.dataSource.data = data;
+        this.changeDetectorRefs.detectChanges();
       })
   }
   applyFilter(filterValue: string) {

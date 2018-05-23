@@ -88,7 +88,7 @@ export class PersonalEditComponent implements OnInit {
   //construye el formulario
   buildForm(): void {
     this.personalForm = this.fb.group({
-      'id': ['', [
+      'idpersona': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
       'nombre': ['', [

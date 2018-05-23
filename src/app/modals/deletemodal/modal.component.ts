@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { PersonalService } from "../../services/personal.service";
@@ -16,7 +16,8 @@ export class ModalComponent implements OnInit {
   constructor(
     private pes: PersonalService,
     public dialogRef: MatDialogRef<ModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   onNoClick(): void {
     this.dialogRef.close();
