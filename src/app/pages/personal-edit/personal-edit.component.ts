@@ -35,7 +35,7 @@ export class PersonalEditComponent implements OnInit {
       data =>{
         this.personal = data
         console.log(data)
-        this.personalForm.setValue(
+        this.personalForm.patchValue(
           this.personal
         )
       }
@@ -50,9 +50,10 @@ export class PersonalEditComponent implements OnInit {
 
   editPersonal(): void {
     //const newObject = Object.assign({}, this.personal, this.personalForm.value );
+    console.log(this.personalForm.value)
     this.pes.editPersonal(this.personalForm.value,this.id)
-      .subscribe(
-        data=> console.log(data)
+    .subscribe(
+      data=> console.log(data)
       )  
     this.router.navigate(['/personal']);
   }
@@ -87,7 +88,7 @@ export class PersonalEditComponent implements OnInit {
   //construye el formulario
   buildForm(): void {
     this.personalForm = this.fb.group({
-      'idpersona': ['', [
+      'id': ['', [
         Validators.pattern('^[0-9]*$')
       ]],
       'nombre': ['', [

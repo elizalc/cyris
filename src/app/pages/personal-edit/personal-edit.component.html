@@ -10,7 +10,7 @@
             <label for="id" class="col-form-label">Nro ID (solo para desarrollo)</label>
             <div class="">
               <input type="number" [className]="formErrors.idpersona ? 'form-control is-invalid' : 'form-control'" class="form-control" id="id"
-                formControlName="idpersona" OnlyNumber="true">
+                formControlName="id" OnlyNumber="true">
               <p class="error-msg" *ngIf="formErrors.id">
                 <small class="text-danger">
                   {{ formErrors.idpersona }}

@@ -24,19 +24,19 @@ export class PersonalService {
   ) { }
 
   public getPersonal(): Observable<Personal[]> {
-    return this.http.get<Personal[]>(this.url_service)
+    return this.http.get<Personal[]>(this.serviceUrl)
   }
   public addPersonal(newPersonal: PersonalList): Observable<PersonalList[]>{
-    return this.http.post<PersonalList[]>(this.url_service, newPersonal)
+    return this.http.post<PersonalList[]>(this.serviceUrl, newPersonal)
   }
   public editPersonal(editPersonal: PersonalList, id): Observable<PersonalList[]>{
-    return this.http.put<PersonalList[]>(this.url_service+'/'+id,editPersonal)
+    return this.http.put<PersonalList[]>(this.serviceUrl+'/'+id,editPersonal)
   }
   public loadPersonal(id): Observable<PersonalList[]>{
-    return this.http.get<PersonalList[]>(this.url_service + '/' + id)
+    return this.http.get<PersonalList[]>(this.serviceUrl + '/' + id)
   }
   public deletePersonal(id){
-    return this.http.delete(this.url_service + '/' + id)
+    return this.http.delete(this.serviceUrl + '/' + id)
   }
   private handleError(error: Response | any) {
     // console.error('handleError',error);

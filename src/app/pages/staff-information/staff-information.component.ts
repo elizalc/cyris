@@ -10,6 +10,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { Personal } from "../../models/personal.model";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MaterialModule } from "../../material/material.module";
+import { ModalComponent } from "../../modals/deletemodal/modal.component";
 
 @Component({
   selector: 'app-staff-information',
@@ -53,14 +54,16 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
   ngOnChanges(){
     this.refresh()
   }
-  openModal(id):void{
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+  
+  openDialog(id) {
+    let dialogRef = this.dialog.open(ModalComponent, {
+      width: '600px',
       data: { id: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log(`Dialog closed: ${result}`);
+      //this.dialogResult = result;
     });
   }
 
@@ -106,32 +109,3 @@ export class PersonalDataSource extends DataSource<any> {
   disconnect() { }
 }
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  dataSource = new MatTableDataSource<Personal>();
-
-  constructor(
-    private pes: PersonalService,
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-    this.pes.getPersonal()
-      .subscribe(data => {
-        this.dataSource.data = data;
-      })
-  }
-  deletePersonal(id): void {
-    this.pes.deletePersonal(id)
-      .subscribe(
-        data => console.log(data)
-      )
-    this.onNoClick()
-  }
- 
-}

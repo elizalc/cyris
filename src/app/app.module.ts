@@ -21,10 +21,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { AuthService } from "./services/auth.service";
 import { PersonalService } from "./services/personal.service";
-import { StaffInformationComponent, DialogOverviewExampleDialog } from './pages/staff-information/staff-information.component';
+import { StaffInformationComponent } from './pages/staff-information/staff-information.component';
 import { NewPersonalComponent } from './pages/new-personal/new-personal.component';
 import { PersonalEditComponent } from './pages/personal-edit/personal-edit.component';
-import { ModalComponent } from './modals/modal/modal.component';
+import { ModalComponent } from './modals/deletemodal/modal.component'
 
 @NgModule({
   declarations: [
@@ -34,8 +34,7 @@ import { ModalComponent } from './modals/modal/modal.component';
     NewPersonalComponent,
     PersonalEditComponent,
     OnlyNumberDirective,
-    ModalComponent,
-    DialogOverviewExampleDialog
+    ModalComponent
   ],
   imports: [
     LayoutModule,
@@ -53,6 +52,9 @@ import { ModalComponent } from './modals/modal/modal.component';
     ModalModule
   ],
   providers: [AuthService, PersonalService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalComponent,
+  ]
 })
 export class AppModule { }
