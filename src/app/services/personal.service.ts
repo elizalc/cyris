@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router, Data } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -15,13 +15,23 @@ export class PersonalService {
 
   private url_service = 'https://34.230.73.198:8443/v1/personas'
   private serviceUrl = 'https://cyris-data.herokuapp.com/personal'
+  dataCollection: AngularFirestoreCollection<PersonalList>;
+  data: Observable<PersonalList[]>
+  dataDoc: AngularFirestoreDocument<PersonalList>
   //total: AngularFirestoreCollection<Personal>
   //totalPersonal: Observable<Personal[]>
 
   constructor(
     private http: HttpClient,
     private db: AngularFirestore
-  ) { }
+  ) { 
+    this.dataCollection = this.db.collection('datos');
+    this.data = this.dataCollection.valueChanges();
+    this.data.subscribe(
+      data=> console.log(data)
+    )
+
+  }
 
   public getPersonal(): Observable<Personal[]> {
     return this.http.get<Personal[]>(this.url_service)
@@ -43,4 +53,9 @@ export class PersonalService {
     console.error('handleError', error.message || error);
     return error
   }
+
+  public addPersonalfb(newPersonal: PersonalList){
+    this.dataCollection.add(newPersonal);
+  }
 }
+

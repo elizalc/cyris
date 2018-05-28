@@ -38,6 +38,9 @@ export class NewPersonalComponent implements OnInit {
       .subscribe(data=>console.log(data))
     this.router.navigate(['/personal']);
   }
+  addNew(): void {
+    this.pes.addPersonalfb(this.personalForm.value)
+  }
 
   fileChangeEvent(fileInput: any) {
     var file = fileInput.target.files;
