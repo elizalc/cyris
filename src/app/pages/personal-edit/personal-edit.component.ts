@@ -30,16 +30,17 @@ export class PersonalEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id= params['id']
     });
-    this.pes.loadPersonal(this.id)
-    .subscribe(
-      data =>{
-        this.personal = data
-        console.log(data)
-        this.personalForm.patchValue(
-          this.personal
-        )
-      }
-    )
+    // this.pes.loadPersonal(this.id)
+    //   .subscribe(
+    //   data =>{
+    //     this.personal = data
+    //     console.log(data)
+    //     this.personalForm.patchValue(
+    //       this.personal
+    //     )
+    //   }
+    // )
+    this.pes.getSingleItem(this.id)
     this.buildForm()
   }
  

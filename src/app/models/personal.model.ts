@@ -8,7 +8,7 @@ export interface Personal {
   fechanacimiento: string
 }
 export interface PersonalList {
-  idpersona:number,
+  idpersona:any,
   nombre: string,
   nombre2?: string,
   paterno: string,

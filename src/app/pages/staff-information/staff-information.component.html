@@ -33,24 +33,24 @@
       </ng-container>
 
       <!-- Symbol Column -->
-      <ng-container matColumnDef="nroDNI">
+      <ng-container matColumnDef="nrodni">
         <th mat-header-cell *matHeaderCellDef> DNI </th>
-        <td mat-cell *matCellDef="let personal"> {{personal.nroDNI}} </td>
+        <td mat-cell *matCellDef="let personal"> {{personal.nrodni}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="estadoCivil">
+      <ng-container matColumnDef="estadocivil">
         <th mat-header-cell *matHeaderCellDef> Estado Civil </th>
-        <td mat-cell *matCellDef="let personal"> {{personal.estadoCivil}} </td>
+        <td mat-cell *matCellDef="let personal"> {{personal.estadocivil}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="fechaNacimiento">
+      <ng-container matColumnDef="fechanacimiento">
         <th mat-header-cell *matHeaderCellDef> Fecha de Nacimiento </th>
-        <td mat-cell *matCellDef="let personal"> {{personal.fechaNacimiento}} </td>
+        <td mat-cell *matCellDef="let personal"> {{personal.fechanacimiento}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let personal"> <a class="action-links" [routerLink]="['/personal/editar', personal.idpersona ]">Editar </a> <a href="javascript:void(0)" class="action-links" (click)="openDialog(personal.idpersona)"> Borrar</a></td>
+        <td mat-cell *matCellDef="let personal"> <a class="action-links" [routerLink]="['/personal/editar', personal.id ]">Editar </a> <a href="javascript:void(0)" class="action-links" (click)="openDialog(personal.id)"> Borrar</a></td>
       </ng-container>
        <!-- (click)="deletePersonal(personal.id)" -->
 

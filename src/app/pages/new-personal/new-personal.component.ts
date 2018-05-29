@@ -40,6 +40,7 @@ export class NewPersonalComponent implements OnInit {
   }
   addNew(): void {
     this.pes.addPersonalfb(this.personalForm.value)
+    this.router.navigate(['/personal']);
   }
 
   fileChangeEvent(fileInput: any) {

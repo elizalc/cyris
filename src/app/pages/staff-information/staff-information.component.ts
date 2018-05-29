@@ -24,7 +24,7 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
     name: ''
   }
   public modalRef: BsModalRef;
-  displayedColumns = ['nombre', 'paterno', 'materno', 'nroDNI', 'estadoCivil', 'fechaNacimiento', 'Acciones'];
+  displayedColumns = ['nombre', 'paterno', 'materno', 'nrodni', 'estadocivil', 'fechanacimiento', 'Acciones'];
   dataSource = new MatTableDataSource<Personal>();
   //dataSource = new PersonalDataSource(this.pes);
 
@@ -39,11 +39,17 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
   ) { }
 
   ngOnInit() {
-    this.refresh()
-    this.pes.getPersonal()
-      .subscribe(data => {
+    //this.refresh()
+    this.pes.getPersonalfb()
+      .subscribe(data =>{
+        console.log(this.dataSource.data)
         this.dataSource.data = data;
+        console.log(data)
       })
+    // this.pes.getPersonal()
+    //   .subscribe(data => {
+    //     this.dataSource.data = data;
+    //   })
   }
 
   ngAfterViewInit() {
