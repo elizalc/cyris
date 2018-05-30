@@ -13,39 +13,46 @@ import { MaterialModule } from "../../material/material.module";
 import { ModalComponent } from "../../modals/deletemodal/modal.component";
 
 @Component({
-  selector: 'app-staff-information',
-  templateUrl: './staff-information.component.html',
-  styleUrls: ['./staff-information.component.css']
+  selector: "app-staff-information",
+  templateUrl: "./staff-information.component.html",
+  styleUrls: ["./staff-information.component.css"]
 })
-export class StaffInformationComponent implements OnInit, OnChanges, AfterViewInit {
-
-  public allPersonal= []
+export class StaffInformationComponent
+  implements OnInit, OnChanges, AfterViewInit {
+  public allPersonal = [];
   public userFilterAll = {
-    name: ''
-  }
+    name: ""
+  };
   public modalRef: BsModalRef;
-  displayedColumns = ['nombre', 'paterno', 'materno', 'nrodni', 'estadocivil', 'fechanacimiento', 'Acciones'];
+  displayedColumns = [
+    "nombre",
+    "paterno",
+    "materno",
+    "nrodni",
+    "estadocivil",
+    "fechanacimiento",
+    "Acciones"
+  ];
   dataSource = new MatTableDataSource<Personal>();
   //dataSource = new PersonalDataSource(this.pes);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filter: ElementRef;
+  @ViewChild("filter") filter: ElementRef;
 
   constructor(
     public dialog: MatDialog,
-    private pes : PersonalService,
+    private pes: PersonalService,
     private changeDetectorRefs: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit() {
     //this.refresh()
-    this.pes.getPersonalfb()
-      .subscribe(data =>{
-        console.log(this.dataSource.data)
-        this.dataSource.data = data;
-        console.log(data)
-      })
+    this.pes.getPersonalfb().subscribe(data => {
+      console.log(this.dataSource.data);
+      this.dataSource.data = data;
+      console.log(data);
+    });
     // this.pes.getPersonal()
     //   .subscribe(data => {
     //     this.dataSource.data = data;
@@ -54,55 +61,55 @@ export class StaffInformationComponent implements OnInit, OnChanges, AfterViewIn
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;  
+    this.dataSource.sort = this.sort;
     //this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
   }
-  ngOnChanges(){
-    this.refresh()
+  ngOnChanges() {
+    this.refresh();
   }
-  
+
   openDialog(id) {
     let dialogRef = this.dialog.open(ModalComponent, {
-      width: '400px',
+      width: "400px",
       data: { id: id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
-      this.refresh()
+      this.refresh();
       //this.dialogResult = result;
     });
   }
 
   showPersonal() {
-    console.log('algo')
-    this.pes.getPersonal()
-      .subscribe(
-        data => console.log(data)
-      )
+    console.log("algo");
+    this.pes.getPersonal().subscribe(data => console.log(data));
   }
 
+  // deletePersonal(id): void {
+  //   this.pes.deletePersonal(id)
+  //     .subscribe(
+  //       data=> console.log(data)
+  //     )
+  //   this.refresh()
+  // }
+
   deletePersonal(id): void {
-    this.pes.deletePersonal(id)
-      .subscribe(
-        data=> console.log(data)
-      )
-    this.refresh()
+    this.pes.deleteFb(id).then(data => console.log(data));
+    // this.refresh();
   }
-  
+
   refresh() {
-    this.pes.getPersonal()
-      .subscribe(data => {
-        this.dataSource.data = data;
-        this.changeDetectorRefs.detectChanges();
-      })
+    this.pes.getPersonal().subscribe(data => {
+      this.dataSource.data = data;
+      this.changeDetectorRefs.detectChanges();
+    });
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-
 }
 
 export class PersonalDataSource extends DataSource<any> {

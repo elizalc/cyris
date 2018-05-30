@@ -4,6 +4,7 @@ import { MaterialModule } from '../../material/material.module';
 import { ActivatedRoute, Router, ParamMap  } from "@angular/router";
 import { PersonalService } from "../../services/personal.service";
 import { ToastrService } from 'ngx-toastr';
+import "rxjs/add/operator/map";
 declare var $: any;
 
 @Component({
@@ -40,22 +41,43 @@ export class PersonalEditComponent implements OnInit {
     //     )
     //   }
     // )
-    this.pes.getSingleItem(this.id)
-    this.buildForm()
+    this.buildForm();
+    console.log(this.pes.getSingleItemfb(this.id));
+    this.pes.getSingleItemfb(this.id)
+      .then(
+      data =>{
+        this.personal = data.data()
+        console.log(data.data())
+        this.personalForm.patchValue(
+          this.personal
+        )
+      }
+    )
+
+
   }
- 
+
   ngAfterViewInit() {
     // $('#popoverData').popover();
     // $('.popover').popover({ trigger: "hover" });
   }
 
-  editPersonal(): void {
-    //const newObject = Object.assign({}, this.personal, this.personalForm.value );
+  // editPersonal(): void {
+  //   //const newObject = Object.assign({}, this.personal, this.personalForm.value );
+  //   console.log(this.personalForm.value)
+  //   this.pes.editPersonal(this.personalForm.value,this.id)
+  //   .subscribe(
+  //     data=> console.log(data)
+  //     )
+  //   this.router.navigate(['/personal']);
+  // }
+
+  editPersonal():void {
     console.log(this.personalForm.value)
-    this.pes.editPersonal(this.personalForm.value,this.id)
-    .subscribe(
+    this.pes.updateTodo(this.id,this.personalForm.value)
+    .then(
       data=> console.log(data)
-      )  
+      )
     this.router.navigate(['/personal']);
   }
 
