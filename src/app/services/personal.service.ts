@@ -70,9 +70,17 @@ export class PersonalService {
     this.dataCollection.add(newPersonal);
   }
   public getPersonalfb() {
-    // this.personalObs = this.afs.collection('datos').valueChanges()
+     this.personalObs = this.afs.collection('datos').snapshotChanges().map(actions => {
+      return actions.map(action =>{
+        const data = action.payload.doc.data() as PersonalList;
+        console.log(data);
+        const id = action.payload.doc.id;
+        this.id = id;
+        return { id, ...data };
+      })
+     })
 
-    return this.personal;
+    return this.personalObs;
   }
   public getSingleItem(id) {
     return this.dataCollection
