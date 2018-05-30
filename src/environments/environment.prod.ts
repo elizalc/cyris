@@ -5,7 +5,7 @@ export const environment = {
     authDomain: "cyris-18.firebaseapp.com",
     databaseURL: "https://cyris-18.firebaseio.com",
     projectId: "cyris-18",
-    storageBucket: "",
+    storageBucket: "cyris-18.appspot.com",
     messagingSenderId: "947646433556"
   }
 };

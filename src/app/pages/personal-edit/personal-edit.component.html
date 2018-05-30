@@ -3,24 +3,7 @@
     <form [formGroup]="personalForm" (ngSubmit)="editPersonal()">
       <h3 class="mt-4">Nuevo Personal</h3>
       <hr>
-      <div class="row">
-        <div class="col-12 col-md-4">
 
-          <div class="form-group">
-            <label for="id" class="col-form-label">Nro ID (solo para desarrollo)</label>
-            <div class="">
-              <input type="number" [className]="formErrors.idpersona ? 'form-control is-invalid' : 'form-control'" class="form-control"
-                id="id" formControlName="idpersona" OnlyNumber="true">
-              <p class="error-msg" *ngIf="formErrors.idpersona">
-                <small class="text-danger">
-                  {{ formErrors.idpersona }}
-                </small>
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
       <!-- <div class="row">
 
@@ -948,6 +931,7 @@
               <input type="file" placeholder="Foto del empleado" (change)="fileChangeEvent($event)" name="image">
               <img id="preview" src="{{imagen}}">
               <!-- <small>* Solo arhivos .jpg o .png y max. de tamaño 5MB</small> -->
+              <img  src="{{img}}">
             </div>
           </div>
         </div>

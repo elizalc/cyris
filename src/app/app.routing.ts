@@ -7,6 +7,7 @@ import { StaffInformationComponent } from "./pages/staff-information/staff-infor
 import { NewPersonalComponent } from "./pages/new-personal/new-personal.component";
 import { PersonalEditComponent } from "./pages/personal-edit/personal-edit.component";
 
+import { AuthguardService } from "./services/authguard.service";
 export const AppRoutes: Routes =[
   {
     path: '',
@@ -21,6 +22,7 @@ export const AppRoutes: Routes =[
   {
     "path": "",
     "component": LayoutComponent,
+    "canActivate": [AuthguardService],
     "children": [
       {
         path: "personal",

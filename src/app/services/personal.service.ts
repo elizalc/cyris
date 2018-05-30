@@ -67,13 +67,12 @@ export class PersonalService {
   }
 
   public addPersonalfb(newPersonal: PersonalList) {
-    this.dataCollection.add(newPersonal);
+    return this.dataCollection.add(newPersonal);
   }
   public getPersonalfb() {
      this.personalObs = this.afs.collection('datos').snapshotChanges().map(actions => {
       return actions.map(action =>{
         const data = action.payload.doc.data() as PersonalList;
-        console.log(data);
         const id = action.payload.doc.id;
         this.id = id;
         return { id, ...data };

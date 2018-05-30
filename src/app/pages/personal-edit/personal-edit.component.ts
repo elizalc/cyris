@@ -4,6 +4,7 @@ import { MaterialModule } from '../../material/material.module';
 import { ActivatedRoute, Router, ParamMap  } from "@angular/router";
 import { PersonalService } from "../../services/personal.service";
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from 'angularfire2/storage';
 import "rxjs/add/operator/map";
 declare var $: any;
 
@@ -15,16 +16,19 @@ declare var $: any;
 export class PersonalEditComponent implements OnInit {
 
   public personalForm: FormGroup
-  public id: number
+  public id: any
   public personal: Object
   public imagen = ''
+  public file: any
+  public img: any
 
   constructor(
     private fb: FormBuilder,
     private pes: PersonalService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private afStorage: AngularFireStorage
   ) { }
 
   ngOnInit() {
@@ -53,6 +57,10 @@ export class PersonalEditComponent implements OnInit {
         )
       }
     )
+    this.afStorage.ref(this.id).getDownloadURL()
+      .subscribe(
+      data=>this.img = data
+    )
 
 
   }
@@ -78,11 +86,15 @@ export class PersonalEditComponent implements OnInit {
     .then(
       data=> console.log(data)
       )
+    if(this.file){
+      this.afStorage.upload(this.id, this.file); 
+    }
     this.router.navigate(['/personal']);
   }
 
   fileChangeEvent(fileInput: any) {
     var file = fileInput.target.files;
+    this.file = fileInput.target.files[0]
     console.log(file);
     const fileExtension = file[0].name.substr(file[0].name.length - 3);
     if (fileExtension != "png" && fileExtension != 'jpg') {
@@ -97,6 +109,7 @@ export class PersonalEditComponent implements OnInit {
       } else {
         //var user = this.user;
         var imagen = this.imagen;
+        console.log(imagen)
         var reader = new FileReader();
         reader.onload = function (e: any) {
           $('#preview').attr('src', e.target.result);

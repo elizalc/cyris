@@ -4,6 +4,7 @@ import { FormBuilder, FormsModule, FormGroup, Validators, FormArray } from '@ang
 import { MaterialModule } from '../../material/material.module';
 import { PersonalService } from "../../services/personal.service";
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from 'angularfire2/storage';
 declare var $: any;
 
 @Component({
@@ -15,12 +16,14 @@ export class NewPersonalComponent implements OnInit {
 
   public personalForm: FormGroup;
   public imagen = '';
+  public file: any
 
   constructor(
     private fb: FormBuilder,
     private pes: PersonalService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private afStorage: AngularFireStorage
   ) { }
 
   ngOnChanges() {
@@ -35,16 +38,30 @@ export class NewPersonalComponent implements OnInit {
 
   addPersonal(): void {
     this.pes.addPersonal(this.personalForm.value)
-      .subscribe(data=>console.log(data))
+      .subscribe(data=>
+        console.log(data)
+    )
+    //this.afStorage.upload('/fotos', this.file); 
     this.router.navigate(['/personal']);
   }
   addNew(): void {
+    let route = this.router
+    let afs = this.afStorage
+    let file = this.file
     this.pes.addPersonalfb(this.personalForm.value)
-    this.router.navigate(['/personal']);
+      .then(function (docRef) {
+        console.log("Document written with ID: ", docRef.id);
+        if(file){
+          console.log(file)
+          afs.upload(docRef.id, file); 
+        }
+        route.navigate(['/personal']);
+      })
   }
 
   fileChangeEvent(fileInput: any) {
     var file = fileInput.target.files;
+    this.file = fileInput.target.files[0]
     console.log(file);
     const fileExtension = file[0].name.substr(file[0].name.length - 3);
     if (fileExtension != "png" && fileExtension != 'jpg') {
@@ -74,7 +91,6 @@ export class NewPersonalComponent implements OnInit {
   buildForm(): void {
     this.personalForm = this.fb.group({
       'idpersona': ['', [
-        Validators.required,
         Validators.pattern('^[0-9]*$')
       ]],
       'nombre': ['', [

@@ -24,23 +24,23 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     this.auth.login(this.email, this.password)
-      .then(value => {
-        console.log(value);
-        if (value == "auth/wrong-password") {
-          this.toastr.error('Contraseña incorrecta', 'Intenta otra vez', {
-            timeOut: 3000,
-          });
-        } else if (value == "auth/user-not-found") {
-          this.toastr.error('Usuario no encontrado', 'Intenta otra vez', {
-            timeOut: 3000,
-          });
-        } else if (value.operationType == 'signIn') {
-          this.router.navigate(['personal'])
-          this.toastr.success('Ingreso Correcto', 'Bienvenido', {
-            timeOut: 3000,
-          });
-        }
-      })
+      // .then(value => {
+      //   console.log(value);
+      //   if (value == "auth/wrong-password") {
+      //     this.toastr.error('Contraseña incorrecta', 'Intenta otra vez', {
+      //       timeOut: 3000,
+      //     });
+      //   } else if (value == "auth/user-not-found") {
+      //     this.toastr.error('Usuario no encontrado', 'Intenta otra vez', {
+      //       timeOut: 3000,
+      //     });
+      //   } else if (value.operationType == 'signIn') {
+      //     this.router.navigate(['personal'])
+      //     this.toastr.success('Ingreso Correcto', 'Bienvenido', {
+      //       timeOut: 3000,
+      //     });
+      //   }
+      // })
   }
 
   ngOnInit() {

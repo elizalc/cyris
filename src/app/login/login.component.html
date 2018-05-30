@@ -6,7 +6,7 @@
           <form [formGroup]="userForm" (ngSubmit)="login()" class="login">
             <div class="title text-center mb-3">
               <mat-icon class="big-icon">account_circle</mat-icon>
-              <p class="font-bold">Recursos Humanos</p>
+              <p class="font-bold">Simareg - RRHH</p>
             </div>
             <div class="example-full-width form-group">
               <input placeholder="Correo electrónico" [className]="formErrors.email ? 'form-control is-invalid' : 'form-control'" formControlName="email" [(ngModel)]="email">
@@ -23,8 +23,8 @@
             <button class="mt-3 btn btn-default btn-primary" type="submit" [disabled]="!userForm.valid">Login</button>
           </form>
         </div>
-        <div class="img w-25">
-          <img class="img-fluid" src="../../assets/img/Logo final-01.png" alt="">
+        <div class="img w-25 text-center mt-3">
+          <img class="img-fluid" src="../../assets/img/logo.png" alt="">
         </div>
       </div>
     </div>

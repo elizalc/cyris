@@ -3,20 +3,7 @@
     <form [formGroup]="personalForm" (ngSubmit)="addNew()">
       <h3 class="mt-4">Nuevo Personal</h3>
       <hr>
-      <div class="row">
-        <div class="col-12 col-md-4">
-          
-          <div class="form-group">
-            <input type="number" placeholder="Nro ID *" [className]="formErrors.idpersona ? 'form-control is-invalid' : 'form-control'" class="form-control" formControlName="idpersona" OnlyNumber="true">
-            <p class="error-msg" *ngIf="formErrors.idpersona">
-              <small class="text-danger">
-                {{ formErrors.idpersona }}
-              </small>
-            </p>
-          </div>
-        
-        </div>
-      </div>
+
 
       <!-- <div class="row">
 
@@ -805,7 +792,7 @@
 
       <div class="text-right mt-4 mb-5">
         <button type="button" class="btn btn-secondary" routerLinkActive="active" routerLink="/personal">Cancelar</button>
-        <button class="btn btn-primary btn-air ml-2" type="submit" [disabled]="!personalForm.valid" >Guardar</button>
+        <button class="btn btn-primary btn-air ml-2" type="submit" >Guardar</button>
       </div>
 
     </form>

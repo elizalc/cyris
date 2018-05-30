@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, TemplateRef, ChangeDetectorRef, Inject, OnChanges, AfterViewInit } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { AngularFireStorage } from 'angularfire2/storage';
 import { PersonalService } from "../../services/personal.service";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -43,15 +44,14 @@ export class StaffInformationComponent
   constructor(
     public dialog: MatDialog,
     private pes: PersonalService,
-    private changeDetectorRefs: ChangeDetectorRef
+    private changeDetectorRefs: ChangeDetectorRef,
+    private afStorage: AngularFireStorage
   ) {}
 
   ngOnInit() {
     //this.refresh()
     this.pes.getPersonalfb().subscribe(data => {
-      console.log(this.dataSource.data);
       this.dataSource.data = data;
-      console.log(data);
     });
     // this.pes.getPersonal()
     //   .subscribe(data => {

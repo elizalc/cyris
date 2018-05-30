@@ -10,6 +10,8 @@ import { MaterialModule } from "../../material/material.module";
 })
 export class AppHeaderComponent implements OnInit {
   
+  public email:string
+
   constructor(
     private auth: AuthService,
     private router: Router
@@ -17,6 +19,8 @@ export class AppHeaderComponent implements OnInit {
   
 
   ngOnInit() {
+    this.email = this.auth.email
+    console.log(this.email)
   }
 
   logout(): void {
