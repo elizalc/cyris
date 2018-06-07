@@ -456,7 +456,7 @@
           
           <div class="col-12">
             <div class="form-group">
-              <input type="date" placeholder="Vigencia del documento de identidad *" [className]="formErrors.vigenciadni ? 'form-control is-invalid' : 'form-control'"
+              <input type="date" data-toggle='tooltip' title='Vigencia de Dni' placeholder="Vigencia del documento de identidad *" [className]="formErrors.vigenciadni ? 'form-control is-invalid' : 'form-control'"
                 class="form-control" id="vigenciaDNI" OnlyNumber="true" formControlName="vigenciadni">
               <small class="text-danger">
                 {{ formErrors.vigenciadni }}
@@ -486,7 +486,7 @@
           
           <div class="col-12">
             <div class="form-group">
-              <input placeholder="Vigencia de Pasaporte" type="date" [className]="formErrors.vigenciapasaporte ? 'form-control is-invalid' : 'form-control'"
+              <input placeholder="Vigencia de Pasaporte" type="date" data-toggle='tooltip' title='Vigencia de Pasaporte' [className]="formErrors.vigenciapasaporte ? 'form-control is-invalid' : 'form-control'"
                 class="form-control" id="vigenciaPasaporte" OnlyNumber="true" formControlName="vigenciapasaporte">
               <small class="text-danger">
                 {{ formErrors.vigenciapasaporte }}
@@ -527,7 +527,7 @@
           
           <div class="col-12">
             <div class="form-group">
-              <input type="date" [className]="formErrors.fechanacimiento ? 'form-control is-invalid' : 'form-control'" class="form-control"
+              <input type="date" data-toggle='tooltip' title='Fecha de Nacimiento' [className]="formErrors.fechanacimiento ? 'form-control is-invalid' : 'form-control'" class="form-control"
                 id="fechaNacimiento" OnlyNumber="true" formControlName="fechanacimiento">
               <small class="text-danger">
                 {{ formErrors.fechanacimiento }}
@@ -639,7 +639,7 @@
           
           <div class="col-12">
             <div class="form-group">
-              <input type="date" [className]="formErrors.vigencialicencia ? 'form-control is-invalid' : 'form-control'" class="form-control" OnlyNumber="true" formControlName="vigencialicencia">
+              <input type="date" data-toggle='tooltip' title='Vigencia de Licencia' [className]="formErrors.vigencialicencia ? 'form-control is-invalid' : 'form-control'" class="form-control" OnlyNumber="true" formControlName="vigencialicencia">
               <small class="text-danger">
                 {{ formErrors.vigencialicencia }}
               </small>
